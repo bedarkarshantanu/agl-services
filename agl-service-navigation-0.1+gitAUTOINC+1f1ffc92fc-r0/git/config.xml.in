@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="naviapi-binding-service" version="0.1">
+  <name>naviapi-binding-service</name>
+  <icon src="icon.png"/>
+  <content src="config.xml" type="application/vnd.agl.service"/>
+  <description>naviapi binding service</description>
+  <author>AISIN AW</author>
+  <license>GPL</license>
+  <feature name="urn:AGL:widget:required-permission">
+    <param name="urn:AGL:permission::public:hidden" value="required" />
+    <param name="http://tizen.org/privilege/internal/dbus" value="required" />
+  </feature>
+  <feature name="urn:AGL:widget:provided-api">
+     <param name="naviapi" value="ws" />
+  </feature>
+  <feature name="urn:AGL:widget:required-api">
+     <param name="lib/libNaviAPIService.so" value="local" />
+  </feature>
+</widget>

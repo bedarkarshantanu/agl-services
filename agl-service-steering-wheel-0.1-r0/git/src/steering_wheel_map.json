@@ -1,0 +1,36 @@
+{
+	"PROPERTYS" : [
+		{
+		"PROPERTY"		: "VehicleSpeed",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "EngineSpeed",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "AcceleratorPedalPosition",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "TransmissionGearInfo",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "TransmissionMode",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "SteeringWheelAngle",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "TurnSignalStatus",
+		"TYPE"			: "uint16_t",
+		},
+		{
+		"PROPERTY"		: "LightStatusBrake",
+		"TYPE"			: "bool",
+		},
+	]
+}

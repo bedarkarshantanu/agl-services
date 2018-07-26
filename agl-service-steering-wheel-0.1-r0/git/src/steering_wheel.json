@@ -1,0 +1,5 @@
+{
+	"dev_name":  "/dev/input/js0",
+	"wheel_map": "steering_wheel_map.json",
+	"gear_para": "gear_shift_para.json"
+}

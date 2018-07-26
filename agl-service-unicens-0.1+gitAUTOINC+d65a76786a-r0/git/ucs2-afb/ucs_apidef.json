@@ -1,0 +1,243 @@
+{
+  "openapi": "3.0.0",
+  "$schema": "http:iot.bzh/download/openapi/schema-3.0/default-schema.json",
+  "info": {
+    "description": "",
+    "title": "ucs2",
+    "version": "1.0",
+    "x-binding-c-generator": {
+      "api": "UNICENS",
+      "version": 2,
+      "prefix": "ucs2_",
+      "postfix": "",
+      "start": null ,
+      "onevent": null,
+      "preinit": null,
+      "init": "ucs2_initbinding",
+      "scope": "",
+      "private": false
+    }
+  },
+  "servers": [
+    {
+      "url": "ws://{host}:{port}/api/monitor",
+      "description": "Unicens2 API.",
+      "variables": {
+        "host": {
+          "default": "localhost"
+        },
+        "port": {
+          "default": "1234"
+        }
+      },
+      "x-afb-events": [
+        {
+          "$ref": "#/components/schemas/afb-event"
+        }
+      ]
+    }
+  ],
+  "components": {
+    "schemas": {
+      "afb-reply": {
+        "$ref": "#/components/schemas/afb-reply-v2"
+      },
+      "afb-event": {
+        "$ref": "#/components/schemas/afb-event-v2"
+      },
+      "afb-reply-v2": {
+        "title": "Generic response.",
+        "type": "object",
+        "required": [ "jtype", "request" ],
+        "properties": {
+          "jtype": {
+            "type": "string",
+            "const": "afb-reply"
+          },
+          "request": {
+            "type": "object",
+            "required": [ "status" ],
+            "properties": {
+              "status": { "type": "string" },
+              "info": { "type": "string" },
+              "token": { "type": "string" },
+              "uuid": { "type": "string" },
+              "reqid": { "type": "string" }
+            }
+          },
+          "response": { "type": "object" }
+        }
+      },
+      "afb-event-v2": {
+        "type": "object",
+        "required": [ "jtype", "event" ],
+        "properties": {
+          "jtype": {
+            "type": "string",
+            "const": "afb-event"
+          },
+          "event": { "type": "string" },
+          "data": { "type": "object" }
+        }
+      }
+    },
+    "x-permissions": {
+        "config": {
+          "permission": "urn:AGL:permission:UNICENS:public:initialise"
+        },
+        "monitor": {
+          "permission": "urn:AGL:permission:UNICENS:public:monitor"
+        },
+        "controller": {
+          "permission": "urn:AGL:permission:UNICENS:public:controller"
+        }
+    },
+    "responses": {
+            "200": {
+              "description": "A complex object array response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/afb-reply"
+                  }
+                }
+            }
+          }
+    }
+  },
+  "paths": {
+    "/listconfig": {
+      "description": "List Config Files",
+      "get": {
+        "x-permissions": {
+          "$ref": "#/components/x-permissions/config"
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cfgpath",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {"$ref": "#/components/responses/200"}
+        }
+      }
+    },
+    "/initialise": {
+      "description": "configure Unicens2 lib from NetworkConfig.XML.",
+      "get": {
+        "x-permissions": {
+          "$ref": "#/components/x-permissions/config"
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filename",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {"$ref": "#/components/responses/200"}
+        }
+      }
+    },
+    "/subscribe": {
+      "description": "Subscribe to network events.",
+      "get": {
+        "x-permissions": {
+          "$ref": "#/components/x-permissions/monitor"
+        },
+        "responses": {
+          "200": {"$ref": "#/components/responses/200"}
+        }
+      }
+    },
+    "/subscriberx": {
+      "description": "Subscribe to Rx control message events.",
+      "get": {
+        "x-permissions": {
+          "$ref": "#/components/x-permissions/monitor"
+        },
+        "responses": {
+          "200": {"$ref": "#/components/responses/200"}
+        }
+      }
+    },
+    "/writei2c": {
+      "description": "Writes I2C command to remote node.",
+      "get": {
+        "x-permissions": {
+          "$ref": "#/components/x-permissions/monitor"
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "node",
+            "required": true,
+            "schema": {
+                "type": "integer",
+                "format": "int32"
+            }
+          },
+          {
+            "in": "query",
+            "name": "data",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "format": "int32"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {"$ref": "#/components/responses/200"}
+        }
+      }
+    },
+    "/sendmessage": {
+      "description": "Transmits a control message to a node.",
+      "get": {
+        "x-permissions": {
+          "$ref": "#/components/x-permissions/controller"
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "node",
+            "required": true,
+            "schema": {
+                "type": "integer",
+                "format": "int32"
+            }
+          },
+          {
+            "in": "query",
+            "name": "msgid",
+            "required": true,
+            "schema": {
+                "type": "integer",
+                "format": "int32"
+            }
+          },
+          {
+            "in": "query",
+            "name": "data",
+            "required": false,
+            "schema": {
+                "type": "string",
+                "format": "byte"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {"$ref": "#/components/responses/200"}
+        }
+      }
+    }
+  }
+}

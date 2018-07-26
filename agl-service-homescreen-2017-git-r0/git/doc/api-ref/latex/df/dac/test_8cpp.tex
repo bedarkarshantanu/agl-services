@@ -1,0 +1,275 @@
+\hypertarget{test_8cpp}{}\section{libhomescreen/test.cpp File Reference}
+\label{test_8cpp}\index{libhomescreen/test.\+cpp@{libhomescreen/test.\+cpp}}
+{\ttfamily \#include $<$libhomescreen.\+hpp$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$glib-\/2.\+0/glib.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ string $>$ \hyperlink{test_8cpp_aafb7f182b8bb6ba92354dde1658d86a4}{split} (const string \&str, char sep)
+\item 
+static void \hyperlink{test_8cpp_a64a6014565bb3e03294ec4a952d5add0}{usage} ()
+\item 
+static void \hyperlink{test_8cpp_aa9b3c43c212b49edee82ac30a11aa255}{call\+\_\+test} ()
+\item 
+static void \hyperlink{test_8cpp_a6d3cb4886e7afd45bd56b49800da932d}{on\+Rep} (struct json\+\_\+object $\ast$reply\+\_\+contents)
+\item 
+static void \hyperlink{test_8cpp_a6a2874c419fe5936fcccadc7e6cf268e}{on\+Ev} (const string \&\hyperlink{structevent}{event}, struct json\+\_\+object $\ast$event\+\_\+contents)
+\item 
+int \hyperlink{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lib_home_screen}{Lib\+Home\+Screen} $\ast$ \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{test_8cpp_aa9b3c43c212b49edee82ac30a11aa255}\label{test_8cpp_aa9b3c43c212b49edee82ac30a11aa255}} 
+\index{test.\+cpp@{test.\+cpp}!call\+\_\+test@{call\+\_\+test}}
+\index{call\+\_\+test@{call\+\_\+test}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{call\+\_\+test()}{call\_test()}}
+{\footnotesize\ttfamily static void call\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 51 of file test.\+cpp.
+
+
+\begin{DoxyCode}
+52 \{
+53     \textcolor{keywordtype}{string} command;
+54 
+55     cout << \textcolor{stringliteral}{"input verb and argments"} << endl;
+56 
+57     \textcolor{comment}{/* read the buffer */}
+58     \textcolor{keywordflow}{for}(;;)\{
+59         \textcolor{keywordtype}{char} line[1023];
+60         cin.getline(line, \textcolor{keyword}{sizeof}(line));
+61         command = line;
+62         \textcolor{keywordflow}{if}(command.empty())\{
+63             \textcolor{keywordflow}{continue};
+64         \}
+65 
+66         vector<string> v\_command = \hyperlink{test_8cpp_aafb7f182b8bb6ba92354dde1658d86a4}{split}(command, \textcolor{charliteral}{' '});
+67         \textcolor{comment}{/*for(auto itr = v\_command.begin(); itr != v\_command.end(); ++itr)}
+68 \textcolor{comment}{        \{}
+69 \textcolor{comment}{            cout << *itr <<endl;}
+70 \textcolor{comment}{        \}*/}
+71         \textcolor{keywordtype}{size\_t} num = v\_command.size();
+72         \textcolor{keywordflow}{if}(num % 2 == 0)\{
+73             cout << \textcolor{stringliteral}{"If command contains args, please input <key,value> in argument part"} << endl;
+74             \textcolor{keywordflow}{continue};
+75         \}
+76         \textcolor{comment}{/* create json object */}
+77         \textcolor{keyword}{struct }json\_object* j\_obj = json\_object\_new\_object();
+78         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1;i < (v\_command.size()) ;++i)\{
+79             \textcolor{keyword}{struct }json\_object* val     = json\_object\_new\_string(v\_command[i+1].c\_str());
+80             json\_object\_object\_add(j\_obj, v\_command[i].c\_str(), val);
+81             ++i;
+82         \}
+83         \textcolor{comment}{/* call verb via LibHomeScreen */}
+84         \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs}->\hyperlink{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}{call}(v\_command[0], j\_obj);
+85         \textcolor{comment}{/* free vector */}
+86         vector<string>().swap(v\_command);
+87         string().swap(command);
+88     \}
+89 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{test.\+cpp@{test.\+cpp}!main@{main}}
+\index{main@{main}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 117 of file test.\+cpp.
+
+
+\begin{DoxyCode}
+118 \{
+119     \textcolor{keywordtype}{int} ret;
+120     \textcolor{keywordflow}{if}(argc == 1)
+121     \{
+122         printf(\textcolor{stringliteral}{"Please input port num in first argument, and token in second argument"});
+123         \hyperlink{test_8cpp_a64a6014565bb3e03294ec4a952d5add0}{usage}();
+124         \textcolor{keywordflow}{return} 0;
+125     \}
+126     \textcolor{keywordflow}{if}(argc == 2)
+127     \{
+128         \textcolor{keywordtype}{string} av(argv[1]);
+129         \textcolor{keywordflow}{if}( (av == \textcolor{stringliteral}{"-h"}) || (av == \textcolor{stringliteral}{"--help"}))
+130         \{
+131             \hyperlink{test_8cpp_a64a6014565bb3e03294ec4a952d5add0}{usage}();
+132             \textcolor{keywordflow}{return} 0;
+133         \}
+134     \}
+135 
+136     \textcolor{keywordtype}{string} port\_string(argv[1]);
+137     \textcolor{keywordtype}{string} token(argv[2]);
+138     \textcolor{keywordtype}{char}* endptr;
+139     \textcolor{keywordtype}{long} port = strtol(port\_string.c\_str(),&endptr,10);
+140 
+141     \textcolor{comment}{/* error check of range */}
+142     \textcolor{keywordflow}{if}( (port > 20000) || (port < 0) )
+143     \{
+144         printf(\textcolor{stringliteral}{"input under 20000(temporary number)"});
+145         \textcolor{keywordflow}{return} 0;
+146     \}
+147     \textcolor{keywordflow}{if}(*endptr != \textcolor{charliteral}{'\(\backslash\)0'})
+148     \{
+149         printf(\textcolor{stringliteral}{"not number"});
+150         \textcolor{keywordflow}{return} 0;
+151     \}
+152 
+153   cout << \textcolor{stringliteral}{"Call test for LibHomeScreen"} << endl;
+154     \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs} = \textcolor{keyword}{new} \hyperlink{class_lib_home_screen}{LibHomeScreen}();
+155   \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs}->\hyperlink{class_lib_home_screen_a6a57b573cc767725762ba9beab032220}{init}(port, token);
+156 
+157     \textcolor{comment}{// hs->registerCallback(&onEv, &onRep);}
+158   \textcolor{comment}{//}
+159   \textcolor{comment}{// hs->subscribe(event\_list[0]); // tap\_shortcut event subscribe}
+160   \textcolor{comment}{// hs->subscribe(event\_list[1]);}
+161 
+162   \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs}->\hyperlink{class_lib_home_screen_ab1b0e08bf35415de9064afed899e9f85}{set\_event\_handler}(\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}{LibHomeScreen::Event\_TapShortcut}
+      , [](json\_object *\textcolor{keywordtype}{object})\{
+163     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *application\_name = json\_object\_get\_string(
+164         json\_object\_object\_get(\textcolor{keywordtype}{object}, \textcolor{stringliteral}{"application\_name"}));
+165     cout << \textcolor{stringliteral}{"set\_event\_handler Event\_TapShortcut application\_name = "} << application\_name << endl;
+166   \});
+167 
+168   \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs}->\hyperlink{class_lib_home_screen_ab1b0e08bf35415de9064afed899e9f85}{set\_event\_handler}(\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}{LibHomeScreen::Event\_OnScreenMessage}
+      , [](json\_object *\textcolor{keywordtype}{object})\{
+169     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *display\_message = json\_object\_get\_string(
+170         json\_object\_object\_get(\textcolor{keywordtype}{object}, \textcolor{stringliteral}{"display\_message"}));
+171     cout << \textcolor{stringliteral}{"set\_event\_handler Event\_OnScreenMessage display\_message = "} << display\_message << endl;
+172   \});
+173 
+174   \hyperlink{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}{hs}->\hyperlink{class_lib_home_screen_ab1b0e08bf35415de9064afed899e9f85}{set\_event\_handler}(\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}{LibHomeScreen::Event\_OnScreenReply}
+      , [](json\_object *\textcolor{keywordtype}{object})\{
+175     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *reply\_message = json\_object\_get\_string(
+176         json\_object\_object\_get(\textcolor{keywordtype}{object}, \textcolor{stringliteral}{"reply\_message"}));
+177     cout << \textcolor{stringliteral}{"set\_event\_handler Event\_OnScreenReply reply\_message = "} << reply\_message << endl;
+178   \});
+179 
+180     \textcolor{keywordflow}{if} (ret < 0) \{
+181         printf(\textcolor{stringliteral}{"failed to create event loop"});
+182         \textcolor{keywordflow}{return} -1;
+183     \}
+184 
+185     \hyperlink{test_8cpp_aa9b3c43c212b49edee82ac30a11aa255}{call\_test}();
+186 
+187     \textcolor{keywordflow}{return} 0;
+188 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{test_8cpp_a6a2874c419fe5936fcccadc7e6cf268e}\label{test_8cpp_a6a2874c419fe5936fcccadc7e6cf268e}} 
+\index{test.\+cpp@{test.\+cpp}!on\+Ev@{on\+Ev}}
+\index{on\+Ev@{on\+Ev}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{on\+Ev()}{onEv()}}
+{\footnotesize\ttfamily static void on\+Ev (\begin{DoxyParamCaption}\item[{const string \&}]{event,  }\item[{struct json\+\_\+object $\ast$}]{event\+\_\+contents }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 98 of file test.\+cpp.
+
+
+\begin{DoxyCode}
+99 \{
+100     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* str = json\_object\_to\_json\_string(event\_contents);
+101     cout << \textcolor{stringliteral}{"test.cpp [CB onEvent]: event:  "} << \textcolor{keyword}{event}.c\_str() << \textcolor{stringliteral}{"  contents: "} << str << endl;
+102     \textcolor{comment}{//json\_object\_put(event\_contents); do not release!!!}
+103 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{test_8cpp_a6d3cb4886e7afd45bd56b49800da932d}\label{test_8cpp_a6d3cb4886e7afd45bd56b49800da932d}} 
+\index{test.\+cpp@{test.\+cpp}!on\+Rep@{on\+Rep}}
+\index{on\+Rep@{on\+Rep}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{on\+Rep()}{onRep()}}
+{\footnotesize\ttfamily static void on\+Rep (\begin{DoxyParamCaption}\item[{struct json\+\_\+object $\ast$}]{reply\+\_\+contents }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 91 of file test.\+cpp.
+
+
+\begin{DoxyCode}
+92 \{
+93     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* str = json\_object\_to\_json\_string(reply\_contents);
+94     cout << \textcolor{stringliteral}{"test.cpp [CB onRep]: "} << str << endl;
+95     \textcolor{comment}{//json\_object\_put(reply\_contents); do not release!!!}
+96 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{test_8cpp_aafb7f182b8bb6ba92354dde1658d86a4}\label{test_8cpp_aafb7f182b8bb6ba92354dde1658d86a4}} 
+\index{test.\+cpp@{test.\+cpp}!split@{split}}
+\index{split@{split}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily static vector$<$ string $>$ split (\begin{DoxyParamCaption}\item[{const string \&}]{str,  }\item[{char}]{sep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 105 of file test.\+cpp.
+
+
+\begin{DoxyCode}
+106 \{
+107     vector<string> v;
+108     stringstream ss(str);
+109     \textcolor{keywordtype}{string} buffer;
+110     \textcolor{keywordflow}{while}( getline(ss, buffer, sep) ) \{
+111         \textcolor{keywordflow}{if}(!buffer.empty())
+112             v.push\_back(buffer);
+113     \}
+114     \textcolor{keywordflow}{return} v;
+115 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{test_8cpp_a64a6014565bb3e03294ec4a952d5add0}\label{test_8cpp_a64a6014565bb3e03294ec4a952d5add0}} 
+\index{test.\+cpp@{test.\+cpp}!usage@{usage}}
+\index{usage@{usage}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily static void usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 35 of file test.\+cpp.
+
+
+\begin{DoxyCode}
+36 \{
+37     cout << \textcolor{stringliteral}{"verb "}<< \textcolor{stringliteral}{"key:arg"} << endl;
+38     cout << \textcolor{stringliteral}{"example:"} << endl;
+39     cout << \textcolor{stringliteral}{"ping"} << endl;
+40     cout << \textcolor{stringliteral}{"------- -------- --- "} << endl;
+41     cout << \textcolor{stringliteral}{"  verb    key    value"} << endl;
+42     cout << \textcolor{stringliteral}{"verb list:"} << endl;
+43     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} itr = \hyperlink{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}{LibHomeScreen::api\_list}.begin(); itr != 
+      \hyperlink{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}{LibHomeScreen::api\_list}.end(); ++itr)
+44     \{
+45         cout << \textcolor{stringliteral}{"  "} << *itr << endl;
+46     \}
+47     \textcolor{comment}{// Todo output api list}
+48     exit(0);
+49 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}\label{test_8cpp_a529acbd1fed9d98a587edfa62309fa8d}} 
+\index{test.\+cpp@{test.\+cpp}!hs@{hs}}
+\index{hs@{hs}!test.\+cpp@{test.\+cpp}}
+\subsubsection{\texorpdfstring{hs}{hs}}
+{\footnotesize\ttfamily \hyperlink{class_lib_home_screen}{Lib\+Home\+Screen}$\ast$ hs}
+
+
+
+Definition at line 33 of file test.\+cpp.
+

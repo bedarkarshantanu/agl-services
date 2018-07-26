@@ -1,0 +1,202 @@
+\hypertarget{hmi-debug_8h}{}\section{include/hmi-\/debug.h File Reference}
+\label{hmi-debug_8h}\index{include/hmi-\/debug.\+h@{include/hmi-\/debug.\+h}}
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$afb/afb-\/binding.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{H\+M\+I\+\_\+\+E\+R\+R\+OR}(prefix,  args, ...)~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{hmi-debug_8h_a25361812432cd2480bc8f1a8e56ecbf7}{H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG}(prefix,  args, ...)~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b4dd81b4dc7eefbc55ba03415c627ef}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{H\+M\+I\+\_\+\+N\+O\+T\+I\+CE}(prefix,  args, ...)~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a23ae4d711a7bbb3900240cb7316b4b4e}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{hmi-debug_8h_a11b249a67108f0f4c50a0fc8a3eb4f5c}{H\+M\+I\+\_\+\+I\+N\+FO}(prefix,  args, ...)~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583aedee1e3159bfe7d918b6e29873c5aee4}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{H\+M\+I\+\_\+\+D\+E\+B\+UG}(prefix,  args, ...)~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a538b2b6e011479d408ecd2be0f6d6177}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583}{L\+O\+G\+\_\+\+L\+E\+V\+EL} \{ \newline
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a69dacb1837e1e37c6ed34cc2ee1d8848}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+NE} = 0, 
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR}, 
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b4dd81b4dc7eefbc55ba03415c627ef}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG}, 
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a23ae4d711a7bbb3900240cb7316b4b4e}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE}, 
+\newline
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583aedee1e3159bfe7d918b6e29873c5aee4}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO}, 
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a538b2b6e011479d408ecd2be0f6d6177}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG}, 
+\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a0459003454bc8bb17752e6d8e5787444}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+AX} = L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG} (enum \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583}{L\+O\+G\+\_\+\+L\+E\+V\+EL} level, const char $\ast$file, const char $\ast$func, const int line, const char $\ast$prefix, const char $\ast$log,...)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char \hyperlink{hmi-debug_8h_a13d4c7647aad2e84766f8b48a6caab09}{E\+R\+R\+O\+R\+\_\+\+F\+L\+AG} \mbox{[}6\mbox{]}\mbox{[}20\mbox{]} = \{\char`\"{}N\+O\+NE\char`\"{}, \char`\"{}E\+R\+R\+OR\char`\"{}, \char`\"{}W\+A\+R\+N\+I\+NG\char`\"{}, \char`\"{}N\+O\+T\+I\+CE\char`\"{}, \char`\"{}I\+N\+FO\char`\"{}, \char`\"{}D\+E\+B\+UG\char`\"{}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}\label{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!H\+M\+I\+\_\+\+D\+E\+B\+UG@{H\+M\+I\+\_\+\+D\+E\+B\+UG}}
+\index{H\+M\+I\+\_\+\+D\+E\+B\+UG@{H\+M\+I\+\_\+\+D\+E\+B\+UG}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{H\+M\+I\+\_\+\+D\+E\+B\+UG}{HMI\_DEBUG}}
+{\footnotesize\ttfamily \#define H\+M\+I\+\_\+\+D\+E\+B\+UG(\begin{DoxyParamCaption}\item[{}]{prefix,  }\item[{}]{args,  }\item[{}]{... }\end{DoxyParamCaption})~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a538b2b6e011479d408ecd2be0f6d6177}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+Definition at line 22 of file hmi-\/debug.\+h.
+
+\mbox{\Hypertarget{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}\label{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!H\+M\+I\+\_\+\+E\+R\+R\+OR@{H\+M\+I\+\_\+\+E\+R\+R\+OR}}
+\index{H\+M\+I\+\_\+\+E\+R\+R\+OR@{H\+M\+I\+\_\+\+E\+R\+R\+OR}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{H\+M\+I\+\_\+\+E\+R\+R\+OR}{HMI\_ERROR}}
+{\footnotesize\ttfamily \#define H\+M\+I\+\_\+\+E\+R\+R\+OR(\begin{DoxyParamCaption}\item[{}]{prefix,  }\item[{}]{args,  }\item[{}]{... }\end{DoxyParamCaption})~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+Definition at line 18 of file hmi-\/debug.\+h.
+
+\mbox{\Hypertarget{hmi-debug_8h_a11b249a67108f0f4c50a0fc8a3eb4f5c}\label{hmi-debug_8h_a11b249a67108f0f4c50a0fc8a3eb4f5c}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!H\+M\+I\+\_\+\+I\+N\+FO@{H\+M\+I\+\_\+\+I\+N\+FO}}
+\index{H\+M\+I\+\_\+\+I\+N\+FO@{H\+M\+I\+\_\+\+I\+N\+FO}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{H\+M\+I\+\_\+\+I\+N\+FO}{HMI\_INFO}}
+{\footnotesize\ttfamily \#define H\+M\+I\+\_\+\+I\+N\+FO(\begin{DoxyParamCaption}\item[{}]{prefix,  }\item[{}]{args,  }\item[{}]{... }\end{DoxyParamCaption})~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583aedee1e3159bfe7d918b6e29873c5aee4}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+Definition at line 21 of file hmi-\/debug.\+h.
+
+\mbox{\Hypertarget{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}\label{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!H\+M\+I\+\_\+\+N\+O\+T\+I\+CE@{H\+M\+I\+\_\+\+N\+O\+T\+I\+CE}}
+\index{H\+M\+I\+\_\+\+N\+O\+T\+I\+CE@{H\+M\+I\+\_\+\+N\+O\+T\+I\+CE}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{H\+M\+I\+\_\+\+N\+O\+T\+I\+CE}{HMI\_NOTICE}}
+{\footnotesize\ttfamily \#define H\+M\+I\+\_\+\+N\+O\+T\+I\+CE(\begin{DoxyParamCaption}\item[{}]{prefix,  }\item[{}]{args,  }\item[{}]{... }\end{DoxyParamCaption})~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a23ae4d711a7bbb3900240cb7316b4b4e}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+Definition at line 20 of file hmi-\/debug.\+h.
+
+\mbox{\Hypertarget{hmi-debug_8h_a25361812432cd2480bc8f1a8e56ecbf7}\label{hmi-debug_8h_a25361812432cd2480bc8f1a8e56ecbf7}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG@{H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG}}
+\index{H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG@{H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG}{HMI\_WARNING}}
+{\footnotesize\ttfamily \#define H\+M\+I\+\_\+\+W\+A\+R\+N\+I\+NG(\begin{DoxyParamCaption}\item[{}]{prefix,  }\item[{}]{args,  }\item[{}]{... }\end{DoxyParamCaption})~\hyperlink{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}(\hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b4dd81b4dc7eefbc55ba03415c627ef}{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+,\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, prefix, args,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+Definition at line 19 of file hmi-\/debug.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+EL@{L\+O\+G\+\_\+\+L\+E\+V\+EL}}
+\index{L\+O\+G\+\_\+\+L\+E\+V\+EL@{L\+O\+G\+\_\+\+L\+E\+V\+EL}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{L\+O\+G\+\_\+\+L\+E\+V\+EL}{LOG\_LEVEL}}
+{\footnotesize\ttfamily enum \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583}{L\+O\+G\+\_\+\+L\+E\+V\+EL}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+NE@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+NE}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+NE@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+NE}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a69dacb1837e1e37c6ed34cc2ee1d8848}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a69dacb1837e1e37c6ed34cc2ee1d8848}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b4dd81b4dc7eefbc55ba03415c627ef}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b4dd81b4dc7eefbc55ba03415c627ef}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+W\+A\+R\+N\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a23ae4d711a7bbb3900240cb7316b4b4e}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a23ae4d711a7bbb3900240cb7316b4b4e}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+N\+O\+T\+I\+CE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583aedee1e3159bfe7d918b6e29873c5aee4}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583aedee1e3159bfe7d918b6e29873c5aee4}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+I\+N\+FO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a538b2b6e011479d408ecd2be0f6d6177}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a538b2b6e011479d408ecd2be0f6d6177}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+D\+E\+B\+UG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+AX@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+AX}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+AX@{L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+AX}}}\mbox{\Hypertarget{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a0459003454bc8bb17752e6d8e5787444}\label{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a0459003454bc8bb17752e6d8e5787444}} 
+L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+AX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 8 of file hmi-\/debug.\+h.
+
+
+\begin{DoxyCode}
+8               \{
+9     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a69dacb1837e1e37c6ed34cc2ee1d8848}{LOG\_LEVEL\_NONE} = 0,
+10     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}{LOG\_LEVEL\_ERROR},
+11     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b4dd81b4dc7eefbc55ba03415c627ef}{LOG\_LEVEL\_WARNING},
+12     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a23ae4d711a7bbb3900240cb7316b4b4e}{LOG\_LEVEL\_NOTICE},
+13     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583aedee1e3159bfe7d918b6e29873c5aee4}{LOG\_LEVEL\_INFO},
+14     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a538b2b6e011479d408ecd2be0f6d6177}{LOG\_LEVEL\_DEBUG},
+15     \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a0459003454bc8bb17752e6d8e5787444}{LOG\_LEVEL\_MAX} = \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583a5b40f003febbc3b535649d63f4b8a44f}{LOG\_LEVEL\_ERROR}
+16 \};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}\label{hmi-debug_8h_a0846b9d51e2e0612c4825a9a581aa40a}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!\+\_\+\+H\+M\+I\+\_\+\+L\+OG@{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}}
+\index{\+\_\+\+H\+M\+I\+\_\+\+L\+OG@{\+\_\+\+H\+M\+I\+\_\+\+L\+OG}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+H\+M\+I\+\_\+\+L\+O\+G()}{\_HMI\_LOG()}}
+{\footnotesize\ttfamily static void \+\_\+\+H\+M\+I\+\_\+\+L\+OG (\begin{DoxyParamCaption}\item[{enum \hyperlink{hmi-debug_8h_aa5a9053636a30269210c54e734e0d583}{L\+O\+G\+\_\+\+L\+E\+V\+EL}}]{level,  }\item[{const char $\ast$}]{file,  }\item[{const char $\ast$}]{func,  }\item[{const int}]{line,  }\item[{const char $\ast$}]{prefix,  }\item[{const char $\ast$}]{log,  }\item[{}]{... }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 26 of file hmi-\/debug.\+h.
+
+
+\begin{DoxyCode}
+27 \{
+28     \textcolor{keyword}{const} \textcolor{keywordtype}{int} log\_level = (getenv(\textcolor{stringliteral}{"USE\_HMI\_DEBUG"}) == NULL)?0:atoi(getenv(\textcolor{stringliteral}{"USE\_HMI\_DEBUG"}));
+29     \textcolor{keywordflow}{if}(log\_level < level)
+30     \{
+31         \textcolor{keywordflow}{return};
+32     \}
+33 
+34     \textcolor{keywordtype}{char} *message;
+35     \textcolor{keyword}{struct }timespec tp;
+36     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} time;
+37 
+38     clock\_gettime(CLOCK\_REALTIME, &tp);
+39     time = (tp.tv\_sec * 1000000L) + (tp.tv\_nsec / 1000);
+40 
+41     va\_list args;
+42     va\_start(args, log);
+43     \textcolor{keywordflow}{if} (log == NULL || vasprintf(&message, log, args) < 0)
+44         message = NULL;
+45     fprintf(stderr,  \textcolor{stringliteral}{"[%10.3f] [%s %s] [%s:%d] >>> %s \(\backslash\)n"}, time / 1000.0, prefix, 
+      \hyperlink{hmi-debug_8h_a13d4c7647aad2e84766f8b48a6caab09}{ERROR\_FLAG}[level], func, line, message);
+46     va\_end(args);
+47     free(message);
+48 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{hmi-debug_8h_a13d4c7647aad2e84766f8b48a6caab09}\label{hmi-debug_8h_a13d4c7647aad2e84766f8b48a6caab09}} 
+\index{hmi-\/debug.\+h@{hmi-\/debug.\+h}!E\+R\+R\+O\+R\+\_\+\+F\+L\+AG@{E\+R\+R\+O\+R\+\_\+\+F\+L\+AG}}
+\index{E\+R\+R\+O\+R\+\_\+\+F\+L\+AG@{E\+R\+R\+O\+R\+\_\+\+F\+L\+AG}!hmi-\/debug.\+h@{hmi-\/debug.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+F\+L\+AG}{ERROR\_FLAG}}
+{\footnotesize\ttfamily char E\+R\+R\+O\+R\+\_\+\+F\+L\+AG\mbox{[}6\mbox{]}\mbox{[}20\mbox{]} = \{\char`\"{}N\+O\+NE\char`\"{}, \char`\"{}E\+R\+R\+OR\char`\"{}, \char`\"{}W\+A\+R\+N\+I\+NG\char`\"{}, \char`\"{}N\+O\+T\+I\+CE\char`\"{}, \char`\"{}I\+N\+FO\char`\"{}, \char`\"{}D\+E\+B\+UG\char`\"{}\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 24 of file hmi-\/debug.\+h.
+

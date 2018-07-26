@@ -1,0 +1,599 @@
+\hypertarget{homescreen_8c}{}\section{src/homescreen.c File Reference}
+\label{homescreen_8c}\index{src/homescreen.\+c@{src/homescreen.\+c}}
+{\ttfamily \#include $<$afb/afb-\/binding.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$json-\/c/json.\+h$>$}\newline
+{\ttfamily \#include $<$glib.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}hs-\/helper.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structevent}{event}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{homescreen_8c_a369266c24eacffb87046522897a570d5}{\+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}
+\item 
+\#define \hyperlink{homescreen_8c_ad2c1fbc92ba364fcf83f15e6d0af66f0}{A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON}~2
+\item 
+\#define \hyperlink{homescreen_8c_a09f43d9e7e1c5d2198c0d66024b4500e}{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM}~4
+\item 
+\#define \hyperlink{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}{E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE}~100
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{homescreen_8c_af48cab759d4ae0ddbfcdd60f4051ba05}{ping\+Sample} (struct afb\+\_\+req request)
+\item 
+static void \hyperlink{homescreen_8c_a096eae5c8f297f9df142a406eea56227}{tap\+\_\+shortcut} (struct afb\+\_\+req request)
+\item 
+static void \hyperlink{homescreen_8c_a640cf8ed97d804c5ed1c09a349056338}{on\+\_\+screen\+\_\+message} (struct afb\+\_\+req request)
+\item 
+static void \hyperlink{homescreen_8c_a2f380055d7d69828115d2a8951634933}{on\+\_\+screen\+\_\+reply} (struct afb\+\_\+req request)
+\item 
+static void \hyperlink{homescreen_8c_a4ff0c8b506669e5622a6ee168134d8f1}{subscribe} (struct afb\+\_\+req request)
+\item 
+static void \hyperlink{homescreen_8c_ab92621255d7370c6dd8a0f1a8e376ad3}{unsubscribe} (struct afb\+\_\+req request)
+\item 
+static int \hyperlink{homescreen_8c_a83d646edf54a6a082f69121bc89a08de}{preinit} ()
+\item 
+static int \hyperlink{homescreen_8c_a00cbbc0f3f4452db078ae511684a6adc}{init} ()
+\item 
+static void \hyperlink{homescreen_8c_a1279893c0fe937311a81e0a98fb4cf1c}{onevent} (const char $\ast$\hyperlink{structevent}{event}, struct json\+\_\+object $\ast$object)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct \hyperlink{structevent}{event} \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\+\_\+list} \mbox{[}\hyperlink{homescreen_8c_a09f43d9e7e1c5d2198c0d66024b4500e}{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM}\mbox{]}
+\item 
+static struct afb\+\_\+event \hyperlink{homescreen_8c_a2af1ff5a4cbf03125e61e903832035f5}{ev\+\_\+tap\+\_\+shortcut}
+\item 
+static struct afb\+\_\+event \hyperlink{homescreen_8c_af7cfc4f688bb898c09291252c4cb832c}{ev\+\_\+on\+\_\+screen\+\_\+message}
+\item 
+static struct afb\+\_\+event \hyperlink{homescreen_8c_a5c225341e0ecbae0585302ef754a55ec}{ev\+\_\+on\+\_\+screen\+\_\+reply}
+\item 
+static struct afb\+\_\+event \hyperlink{homescreen_8c_a25fbdcc4e5787e3f41d99f4a71e86611}{ev\+\_\+reserved}
+\item 
+static const char \hyperlink{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}{\+\_\+error} \mbox{[}$\,$\mbox{]} = \char`\"{}error\char`\"{}
+\item 
+static const char \hyperlink{homescreen_8c_a1f2c79fa6801b63751e270d67994fe81}{\+\_\+application\+\_\+name} \mbox{[}$\,$\mbox{]} = \char`\"{}application\+\_\+name\char`\"{}
+\item 
+static const char \hyperlink{homescreen_8c_abfd6c1d6f316fa952b11553f8f275e92}{\+\_\+display\+\_\+message} \mbox{[}$\,$\mbox{]} = \char`\"{}display\+\_\+message\char`\"{}
+\item 
+static const char \hyperlink{homescreen_8c_a79b0f0b481161527ccb80e83da143219}{\+\_\+reply\+\_\+message} \mbox{[}$\,$\mbox{]} = \char`\"{}reply\+\_\+message\char`\"{}
+\item 
+static const struct afb\+\_\+verb\+\_\+v2 \hyperlink{homescreen_8c_acad6dadf60fac3d701e488e4fcd11c89}{verbs} \mbox{[}$\,$\mbox{]}
+\item 
+const struct afb\+\_\+binding\+\_\+v2 \hyperlink{homescreen_8c_ae2a62ab481a2922cbfc788193857a12e}{afb\+Binding\+V2}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{homescreen_8c_a369266c24eacffb87046522897a570d5}\label{homescreen_8c_a369266c24eacffb87046522897a570d5}} 
+\index{homescreen.\+c@{homescreen.\+c}!\+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}{\_GNU\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}
+
+
+
+Definition at line 17 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_ad2c1fbc92ba364fcf83f15e6d0af66f0}\label{homescreen_8c_ad2c1fbc92ba364fcf83f15e6d0af66f0}} 
+\index{homescreen.\+c@{homescreen.\+c}!A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON@{A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON@{A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON}{AFB\_BINDING\_VERSION}}
+{\footnotesize\ttfamily \#define A\+F\+B\+\_\+\+B\+I\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+S\+I\+ON~2}
+
+
+
+Definition at line 18 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a09f43d9e7e1c5d2198c0d66024b4500e}\label{homescreen_8c_a09f43d9e7e1c5d2198c0d66024b4500e}} 
+\index{homescreen.\+c@{homescreen.\+c}!C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM@{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM}}
+\index{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM@{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM}{COMMAND\_EVENT\_NUM}}
+{\footnotesize\ttfamily \#define C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM~4}
+
+
+
+Definition at line 31 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}\label{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}} 
+\index{homescreen.\+c@{homescreen.\+c}!E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE@{E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE}}
+\index{E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE@{E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE}{EVENT\_SUBSCRIBE\_ERROR\_CODE}}
+{\footnotesize\ttfamily \#define E\+V\+E\+N\+T\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+DE~100}
+
+
+
+Definition at line 32 of file homescreen.\+c.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{homescreen_8c_a00cbbc0f3f4452db078ae511684a6adc}\label{homescreen_8c_a00cbbc0f3f4452db078ae511684a6adc}} 
+\index{homescreen.\+c@{homescreen.\+c}!init@{init}}
+\index{init@{init}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily static int init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 277 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+278 \{
+279    \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"binding init"});
+280 
+281    \hyperlink{homescreen_8c_a2af1ff5a4cbf03125e61e903832035f5}{ev\_tap\_shortcut} = afb\_daemon\_make\_event(\hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[0]);
+282    \hyperlink{homescreen_8c_af7cfc4f688bb898c09291252c4cb832c}{ev\_on\_screen\_message} = afb\_daemon\_make\_event(\hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[1]);
+283    \hyperlink{homescreen_8c_a5c225341e0ecbae0585302ef754a55ec}{ev\_on\_screen\_reply} = afb\_daemon\_make\_event(\hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[2]);
+284    \hyperlink{homescreen_8c_a25fbdcc4e5787e3f41d99f4a71e86611}{ev\_reserved} = afb\_daemon\_make\_event(\hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[3]);
+285 
+286    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[0].\hyperlink{structevent_a45c6cfb7961a21a3366db067e4cc59ab}{name} = \hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[0];
+287    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[0].\hyperlink{structevent_a58726ebc551d36562ac3f9e1fe293214}{event} = &\hyperlink{homescreen_8c_a2af1ff5a4cbf03125e61e903832035f5}{ev\_tap\_shortcut};
+288 
+289    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[1].\hyperlink{structevent_a45c6cfb7961a21a3366db067e4cc59ab}{name} = \hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[1];
+290    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[1].\hyperlink{structevent_a58726ebc551d36562ac3f9e1fe293214}{event} = &\hyperlink{homescreen_8c_af7cfc4f688bb898c09291252c4cb832c}{ev\_on\_screen\_message};
+291 
+292    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[2].\hyperlink{structevent_a45c6cfb7961a21a3366db067e4cc59ab}{name} = \hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[2];
+293    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[2].\hyperlink{structevent_a58726ebc551d36562ac3f9e1fe293214}{event} = &\hyperlink{homescreen_8c_a5c225341e0ecbae0585302ef754a55ec}{ev\_on\_screen\_reply};
+294 
+295    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[3].\hyperlink{structevent_a45c6cfb7961a21a3366db067e4cc59ab}{name} = \hyperlink{hs-helper_8h_a0cd84b1a2184c9b84d1b7bf24582f28e}{evlist}[3];
+296    \hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[3].\hyperlink{structevent_a58726ebc551d36562ac3f9e1fe293214}{event} = &\hyperlink{homescreen_8c_a25fbdcc4e5787e3f41d99f4a71e86611}{ev\_reserved};
+297 
+298    \textcolor{keywordflow}{return} 0;
+299 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_a640cf8ed97d804c5ed1c09a349056338}\label{homescreen_8c_a640cf8ed97d804c5ed1c09a349056338}} 
+\index{homescreen.\+c@{homescreen.\+c}!on\+\_\+screen\+\_\+message@{on\+\_\+screen\+\_\+message}}
+\index{on\+\_\+screen\+\_\+message@{on\+\_\+screen\+\_\+message}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{on\+\_\+screen\+\_\+message()}{on\_screen\_message()}}
+{\footnotesize\ttfamily static void on\+\_\+screen\+\_\+message (\begin{DoxyParamCaption}\item[{struct afb\+\_\+req}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Home\+Screen On\+Screen message
+
+\subparagraph*{Parameters}
+
+Request key
+\begin{DoxyItemize}
+\item display\+\_\+message \+: message for display
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing 
+
+Definition at line 114 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+115 \{
+116     \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"is called."});
+117 
+118     \textcolor{keywordtype}{int} ret = 0;
+119     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* value = afb\_req\_value(request, \hyperlink{homescreen_8c_abfd6c1d6f316fa952b11553f8f275e92}{\_display\_message});
+120     \textcolor{keywordflow}{if} (value) \{
+121 
+122       \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"request params = %s."}, value);
+123 
+124       \textcolor{keyword}{struct }json\_object* push\_obj = json\_object\_new\_object();
+125       \hyperlink{hs-helper_8c_a8777c53f1d4d5412f19b134ad85ffedf}{hs\_add\_object\_to\_json\_object\_str}( push\_obj, 2,
+126       \hyperlink{homescreen_8c_abfd6c1d6f316fa952b11553f8f275e92}{\_display\_message}, value);
+127       afb\_event\_push(\hyperlink{homescreen_8c_af7cfc4f688bb898c09291252c4cb832c}{ev\_on\_screen\_message}, push\_obj);
+128     \} \textcolor{keywordflow}{else} \{
+129       afb\_req\_fail\_f(request, \textcolor{stringliteral}{"failed"}, \textcolor{stringliteral}{"called %s, Unknown palameter"}, \_\_FUNCTION\_\_);
+130       \textcolor{keywordflow}{return};
+131     \}
+132 
+133   \textcolor{comment}{// response to HomeScreen}
+134     \textcolor{keyword}{struct }json\_object *res = json\_object\_new\_object();
+135     \hyperlink{hs-helper_8c_ae83604a37134e7bdee3ce4f10bb0b47a}{hs\_add\_object\_to\_json\_object\_func}(res, \_\_FUNCTION\_\_, 2,
+136       \hyperlink{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}{\_error},  ret);
+137     afb\_req\_success(request, res, \textcolor{stringliteral}{"afb\_event\_push event [on\_screen\_message]"});
+138 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_a2f380055d7d69828115d2a8951634933}\label{homescreen_8c_a2f380055d7d69828115d2a8951634933}} 
+\index{homescreen.\+c@{homescreen.\+c}!on\+\_\+screen\+\_\+reply@{on\+\_\+screen\+\_\+reply}}
+\index{on\+\_\+screen\+\_\+reply@{on\+\_\+screen\+\_\+reply}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{on\+\_\+screen\+\_\+reply()}{on\_screen\_reply()}}
+{\footnotesize\ttfamily static void on\+\_\+screen\+\_\+reply (\begin{DoxyParamCaption}\item[{struct afb\+\_\+req}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Home\+Screen On\+Screen Reply
+
+\subparagraph*{Parameters}
+
+Request key
+\begin{DoxyItemize}
+\item reply\+\_\+message \+: message for reply
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing 
+
+Definition at line 151 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+152 \{
+153     \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"is called."});
+154 
+155     \textcolor{keywordtype}{int} ret = 0;
+156     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* value = afb\_req\_value(request, \hyperlink{homescreen_8c_a79b0f0b481161527ccb80e83da143219}{\_reply\_message});
+157     \textcolor{keywordflow}{if} (value) \{
+158 
+159       \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"request params = %s."}, value);
+160 
+161       \textcolor{keyword}{struct }json\_object* push\_obj = json\_object\_new\_object();
+162       \hyperlink{hs-helper_8c_a8777c53f1d4d5412f19b134ad85ffedf}{hs\_add\_object\_to\_json\_object\_str}( push\_obj, 2,
+163       \hyperlink{homescreen_8c_a79b0f0b481161527ccb80e83da143219}{\_reply\_message}, value);
+164       afb\_event\_push(\hyperlink{homescreen_8c_a5c225341e0ecbae0585302ef754a55ec}{ev\_on\_screen\_reply}, push\_obj);
+165     \} \textcolor{keywordflow}{else} \{
+166       afb\_req\_fail\_f(request, \textcolor{stringliteral}{"failed"}, \textcolor{stringliteral}{"called %s, Unknown palameter"}, \_\_FUNCTION\_\_);
+167       \textcolor{keywordflow}{return};
+168     \}
+169 
+170   \textcolor{comment}{// response to HomeScreen}
+171     \textcolor{keyword}{struct }json\_object *res = json\_object\_new\_object();
+172     \hyperlink{hs-helper_8c_ae83604a37134e7bdee3ce4f10bb0b47a}{hs\_add\_object\_to\_json\_object\_func}(res, \_\_FUNCTION\_\_, 2,
+173       \hyperlink{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}{\_error},  ret);
+174     afb\_req\_success(request, res, \textcolor{stringliteral}{"afb\_event\_push event [on\_screen\_reply]"});
+175 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_a1279893c0fe937311a81e0a98fb4cf1c}\label{homescreen_8c_a1279893c0fe937311a81e0a98fb4cf1c}} 
+\index{homescreen.\+c@{homescreen.\+c}!onevent@{onevent}}
+\index{onevent@{onevent}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{onevent()}{onevent()}}
+{\footnotesize\ttfamily static void onevent (\begin{DoxyParamCaption}\item[{const char $\ast$}]{event,  }\item[{struct json\+\_\+object $\ast$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 301 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+302 \{
+303    \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"on\_event %s"}, \hyperlink{structevent}{event});
+304 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_af48cab759d4ae0ddbfcdd60f4051ba05}\label{homescreen_8c_af48cab759d4ae0ddbfcdd60f4051ba05}} 
+\index{homescreen.\+c@{homescreen.\+c}!ping\+Sample@{ping\+Sample}}
+\index{ping\+Sample@{ping\+Sample}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{ping\+Sample()}{pingSample()}}
+{\footnotesize\ttfamily static void ping\+Sample (\begin{DoxyParamCaption}\item[{struct afb\+\_\+req}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 57 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+58 \{
+59    \textcolor{keyword}{static} \textcolor{keywordtype}{int} pingcount = 0;
+60    afb\_req\_success\_f(request, json\_object\_new\_int(pingcount), \textcolor{stringliteral}{"Ping count = %d"}, pingcount);
+61    \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"Verbosity macro at level notice invoked at ping invocation
+       count = %d"}, pingcount);
+62    pingcount++;
+63 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_a83d646edf54a6a082f69121bc89a08de}\label{homescreen_8c_a83d646edf54a6a082f69121bc89a08de}} 
+\index{homescreen.\+c@{homescreen.\+c}!preinit@{preinit}}
+\index{preinit@{preinit}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{preinit()}{preinit()}}
+{\footnotesize\ttfamily static int preinit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 271 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+272 \{
+273    \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"binding preinit (was register)"});
+274    \textcolor{keywordflow}{return} 0;
+275 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_a4ff0c8b506669e5622a6ee168134d8f1}\label{homescreen_8c_a4ff0c8b506669e5622a6ee168134d8f1}} 
+\index{homescreen.\+c@{homescreen.\+c}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{subscribe()}{subscribe()}}
+{\footnotesize\ttfamily static void subscribe (\begin{DoxyParamCaption}\item[{struct afb\+\_\+req}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Subscribe event
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item event \+: Event name. Event list is written in \hyperlink{libhomescreen_8cpp}{libhomescreen.\+cpp}
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing
+
+\subparagraph*{Note}
+
+Definition at line 189 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+190 \{
+191     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value = afb\_req\_value(request, \textcolor{stringliteral}{"event"});
+192     \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"value is %s"}, value);
+193     \textcolor{keywordtype}{int} ret = 0;
+194     \textcolor{keywordflow}{if}(value) \{
+195         \textcolor{keywordtype}{int} index = \hyperlink{hs-helper_8c_a2ff1b894941c3b461ca8119079c4146a}{hs\_search\_event\_name\_index}(value);
+196         \textcolor{keywordflow}{if}(index < 0)
+197         \{
+198             \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"dedicated event doesn't exist"});
+199             ret = \hyperlink{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}{EVENT\_SUBSCRIBE\_ERROR\_CODE};
+200         \}
+201         \textcolor{keywordflow}{else}
+202         \{
+203             afb\_req\_subscribe(request, *\hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[index].\hyperlink{structevent}{event});
+204         \}
+205     \}
+206     \textcolor{keywordflow}{else}\{
+207         \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"Please input event name"});
+208         ret = \hyperlink{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}{EVENT\_SUBSCRIBE\_ERROR\_CODE};
+209     \}
+210     \textcolor{comment}{/*create response json object*/}
+211     \textcolor{keyword}{struct }json\_object *res = json\_object\_new\_object();
+212     \hyperlink{hs-helper_8c_ae83604a37134e7bdee3ce4f10bb0b47a}{hs\_add\_object\_to\_json\_object\_func}(res, \_\_FUNCTION\_\_, 2,
+213         \hyperlink{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}{\_error}, ret);
+214     afb\_req\_success\_f(request, res, \textcolor{stringliteral}{"homescreen binder subscribe event name [%s]"}, value);
+215 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_a096eae5c8f297f9df142a406eea56227}\label{homescreen_8c_a096eae5c8f297f9df142a406eea56227}} 
+\index{homescreen.\+c@{homescreen.\+c}!tap\+\_\+shortcut@{tap\+\_\+shortcut}}
+\index{tap\+\_\+shortcut@{tap\+\_\+shortcut}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{tap\+\_\+shortcut()}{tap\_shortcut()}}
+{\footnotesize\ttfamily static void tap\+\_\+shortcut (\begin{DoxyParamCaption}\item[{struct afb\+\_\+req}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+tap\+\_\+shortcut notify for homescreen When Shortcut area is tapped, notify these applciations
+
+\subparagraph*{Parameters}
+
+Request key
+\begin{DoxyItemize}
+\item application\+\_\+name \+: application name
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing 
+
+Definition at line 77 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+78 \{
+79     \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"is called."});
+80 
+81     \textcolor{keywordtype}{int} ret = 0;
+82     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* value = afb\_req\_value(request, \hyperlink{homescreen_8c_a1f2c79fa6801b63751e270d67994fe81}{\_application\_name});
+83     \textcolor{keywordflow}{if} (value) \{
+84 
+85       \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"request params = %s."}, value);
+86 
+87       \textcolor{keyword}{struct }json\_object* push\_obj = json\_object\_new\_object();
+88       \hyperlink{hs-helper_8c_a8777c53f1d4d5412f19b134ad85ffedf}{hs\_add\_object\_to\_json\_object\_str}( push\_obj, 2,
+89       \hyperlink{homescreen_8c_a1f2c79fa6801b63751e270d67994fe81}{\_application\_name}, value);
+90       afb\_event\_push(\hyperlink{homescreen_8c_a2af1ff5a4cbf03125e61e903832035f5}{ev\_tap\_shortcut}, push\_obj);
+91     \} \textcolor{keywordflow}{else} \{
+92       afb\_req\_fail\_f(request, \textcolor{stringliteral}{"failed"}, \textcolor{stringliteral}{"called %s, Unknown palameter"}, \_\_FUNCTION\_\_);
+93       \textcolor{keywordflow}{return};
+94     \}
+95 
+96   \textcolor{comment}{// response to HomeScreen}
+97     \textcolor{keyword}{struct }json\_object *res = json\_object\_new\_object();
+98     \hyperlink{hs-helper_8c_ae83604a37134e7bdee3ce4f10bb0b47a}{hs\_add\_object\_to\_json\_object\_func}(res, \_\_FUNCTION\_\_, 2,
+99       \hyperlink{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}{\_error},  ret);
+100     afb\_req\_success(request, res, \textcolor{stringliteral}{"afb\_event\_push event [tap\_shortcut]"});
+101 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{homescreen_8c_ab92621255d7370c6dd8a0f1a8e376ad3}\label{homescreen_8c_ab92621255d7370c6dd8a0f1a8e376ad3}} 
+\index{homescreen.\+c@{homescreen.\+c}!unsubscribe@{unsubscribe}}
+\index{unsubscribe@{unsubscribe}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{unsubscribe()}{unsubscribe()}}
+{\footnotesize\ttfamily static void unsubscribe (\begin{DoxyParamCaption}\item[{struct afb\+\_\+req}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Unsubscribe event
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item event \+: Event name. Event list is written in \hyperlink{libhomescreen_8cpp}{libhomescreen.\+cpp}
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing
+
+\subparagraph*{Note}
+
+Definition at line 229 of file homescreen.\+c.
+
+
+\begin{DoxyCode}
+230 \{
+231     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *value = afb\_req\_value(request, \textcolor{stringliteral}{"event"});
+232     \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"value is %s"}, value);
+233     \textcolor{keywordtype}{int} ret = 0;
+234     \textcolor{keywordflow}{if}(value) \{
+235         \textcolor{keywordtype}{int} index = \hyperlink{hs-helper_8c_a2ff1b894941c3b461ca8119079c4146a}{hs\_search\_event\_name\_index}(value);
+236         \textcolor{keywordflow}{if}(index < 0)
+237         \{
+238             \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"dedicated event doesn't exist"});
+239             ret = \hyperlink{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}{EVENT\_SUBSCRIBE\_ERROR\_CODE};
+240         \}
+241         \textcolor{keywordflow}{else}
+242         \{
+243             afb\_req\_unsubscribe(request, *\hyperlink{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}{event\_list}[index].\hyperlink{structevent}{event});
+244         \}
+245     \}
+246     \textcolor{keywordflow}{else}\{
+247         \hyperlink{hmi-debug_8h_abc0d6e0760017d8ae48b836925b2ef15}{HMI\_NOTICE}(\textcolor{stringliteral}{"homescreen-service"},\textcolor{stringliteral}{"Please input event name"});
+248         ret = \hyperlink{homescreen_8c_a9a68ed04201d9390bb85b2c6ab1d7250}{EVENT\_SUBSCRIBE\_ERROR\_CODE};
+249     \}
+250     \textcolor{comment}{/*create response json object*/}
+251     \textcolor{keyword}{struct }json\_object *res = json\_object\_new\_object();
+252     \hyperlink{hs-helper_8c_ae83604a37134e7bdee3ce4f10bb0b47a}{hs\_add\_object\_to\_json\_object\_func}(res, \_\_FUNCTION\_\_, 2,
+253         \hyperlink{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}{\_error}, ret);
+254     afb\_req\_success\_f(request, res, \textcolor{stringliteral}{"homescreen binder unsubscribe event name [%s]"}, value);
+255 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{homescreen_8c_a1f2c79fa6801b63751e270d67994fe81}\label{homescreen_8c_a1f2c79fa6801b63751e270d67994fe81}} 
+\index{homescreen.\+c@{homescreen.\+c}!\+\_\+application\+\_\+name@{\+\_\+application\+\_\+name}}
+\index{\+\_\+application\+\_\+name@{\+\_\+application\+\_\+name}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+application\+\_\+name}{\_application\_name}}
+{\footnotesize\ttfamily const char \+\_\+application\+\_\+name\mbox{[}$\,$\mbox{]} = \char`\"{}application\+\_\+name\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 49 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_abfd6c1d6f316fa952b11553f8f275e92}\label{homescreen_8c_abfd6c1d6f316fa952b11553f8f275e92}} 
+\index{homescreen.\+c@{homescreen.\+c}!\+\_\+display\+\_\+message@{\+\_\+display\+\_\+message}}
+\index{\+\_\+display\+\_\+message@{\+\_\+display\+\_\+message}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+display\+\_\+message}{\_display\_message}}
+{\footnotesize\ttfamily const char \+\_\+display\+\_\+message\mbox{[}$\,$\mbox{]} = \char`\"{}display\+\_\+message\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 50 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}\label{homescreen_8c_aed1c5296a2e6d34945507a0fca17a376}} 
+\index{homescreen.\+c@{homescreen.\+c}!\+\_\+error@{\+\_\+error}}
+\index{\+\_\+error@{\+\_\+error}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+error}{\_error}}
+{\footnotesize\ttfamily const char \+\_\+error\mbox{[}$\,$\mbox{]} = \char`\"{}error\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 47 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a79b0f0b481161527ccb80e83da143219}\label{homescreen_8c_a79b0f0b481161527ccb80e83da143219}} 
+\index{homescreen.\+c@{homescreen.\+c}!\+\_\+reply\+\_\+message@{\+\_\+reply\+\_\+message}}
+\index{\+\_\+reply\+\_\+message@{\+\_\+reply\+\_\+message}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reply\+\_\+message}{\_reply\_message}}
+{\footnotesize\ttfamily const char \+\_\+reply\+\_\+message\mbox{[}$\,$\mbox{]} = \char`\"{}reply\+\_\+message\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 51 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_ae2a62ab481a2922cbfc788193857a12e}\label{homescreen_8c_ae2a62ab481a2922cbfc788193857a12e}} 
+\index{homescreen.\+c@{homescreen.\+c}!afb\+Binding\+V2@{afb\+Binding\+V2}}
+\index{afb\+Binding\+V2@{afb\+Binding\+V2}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{afb\+Binding\+V2}{afbBindingV2}}
+{\footnotesize\ttfamily const struct afb\+\_\+binding\+\_\+v2 afb\+Binding\+V2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    .api = \textcolor{stringliteral}{"homescreen"},
+    .specification = NULL,
+    .verbs = \hyperlink{homescreen_8c_acad6dadf60fac3d701e488e4fcd11c89}{verbs},
+    .preinit = \hyperlink{homescreen_8c_a83d646edf54a6a082f69121bc89a08de}{preinit},
+    .init = \hyperlink{homescreen_8c_a00cbbc0f3f4452db078ae511684a6adc}{init},
+    .onevent = \hyperlink{homescreen_8c_a1279893c0fe937311a81e0a98fb4cf1c}{onevent}
+\}
+\end{DoxyCode}
+
+
+Definition at line 306 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_af7cfc4f688bb898c09291252c4cb832c}\label{homescreen_8c_af7cfc4f688bb898c09291252c4cb832c}} 
+\index{homescreen.\+c@{homescreen.\+c}!ev\+\_\+on\+\_\+screen\+\_\+message@{ev\+\_\+on\+\_\+screen\+\_\+message}}
+\index{ev\+\_\+on\+\_\+screen\+\_\+message@{ev\+\_\+on\+\_\+screen\+\_\+message}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{ev\+\_\+on\+\_\+screen\+\_\+message}{ev\_on\_screen\_message}}
+{\footnotesize\ttfamily struct afb\+\_\+event ev\+\_\+on\+\_\+screen\+\_\+message\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 43 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a5c225341e0ecbae0585302ef754a55ec}\label{homescreen_8c_a5c225341e0ecbae0585302ef754a55ec}} 
+\index{homescreen.\+c@{homescreen.\+c}!ev\+\_\+on\+\_\+screen\+\_\+reply@{ev\+\_\+on\+\_\+screen\+\_\+reply}}
+\index{ev\+\_\+on\+\_\+screen\+\_\+reply@{ev\+\_\+on\+\_\+screen\+\_\+reply}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{ev\+\_\+on\+\_\+screen\+\_\+reply}{ev\_on\_screen\_reply}}
+{\footnotesize\ttfamily struct afb\+\_\+event ev\+\_\+on\+\_\+screen\+\_\+reply\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 44 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a25fbdcc4e5787e3f41d99f4a71e86611}\label{homescreen_8c_a25fbdcc4e5787e3f41d99f4a71e86611}} 
+\index{homescreen.\+c@{homescreen.\+c}!ev\+\_\+reserved@{ev\+\_\+reserved}}
+\index{ev\+\_\+reserved@{ev\+\_\+reserved}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{ev\+\_\+reserved}{ev\_reserved}}
+{\footnotesize\ttfamily struct afb\+\_\+event ev\+\_\+reserved\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 45 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a2af1ff5a4cbf03125e61e903832035f5}\label{homescreen_8c_a2af1ff5a4cbf03125e61e903832035f5}} 
+\index{homescreen.\+c@{homescreen.\+c}!ev\+\_\+tap\+\_\+shortcut@{ev\+\_\+tap\+\_\+shortcut}}
+\index{ev\+\_\+tap\+\_\+shortcut@{ev\+\_\+tap\+\_\+shortcut}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{ev\+\_\+tap\+\_\+shortcut}{ev\_tap\_shortcut}}
+{\footnotesize\ttfamily struct afb\+\_\+event ev\+\_\+tap\+\_\+shortcut\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 42 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}\label{homescreen_8c_a1c3c5bfa861dcb58d9e9d216d893864c}} 
+\index{homescreen.\+c@{homescreen.\+c}!event\+\_\+list@{event\+\_\+list}}
+\index{event\+\_\+list@{event\+\_\+list}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{event\+\_\+list}{event\_list}}
+{\footnotesize\ttfamily struct \hyperlink{structevent}{event} event\+\_\+list\mbox{[}\hyperlink{homescreen_8c_a09f43d9e7e1c5d2198c0d66024b4500e}{C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+V\+E\+N\+T\+\_\+\+N\+UM}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 40 of file homescreen.\+c.
+
+\mbox{\Hypertarget{homescreen_8c_acad6dadf60fac3d701e488e4fcd11c89}\label{homescreen_8c_acad6dadf60fac3d701e488e4fcd11c89}} 
+\index{homescreen.\+c@{homescreen.\+c}!verbs@{verbs}}
+\index{verbs@{verbs}!homescreen.\+c@{homescreen.\+c}}
+\subsubsection{\texorpdfstring{verbs}{verbs}}
+{\footnotesize\ttfamily const struct afb\+\_\+verb\+\_\+v2 verbs\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    
+    \{ .verb = \textcolor{stringliteral}{"ping"},              .session = AFB\_SESSION\_NONE,    .callback = 
+      \hyperlink{homescreen_8c_af48cab759d4ae0ddbfcdd60f4051ba05}{pingSample},        .auth = NULL \},
+    \{ .verb = \textcolor{stringliteral}{"tap\_shortcut"},      .session = AFB\_SESSION\_NONE,    .callback = 
+      \hyperlink{homescreen_8c_a096eae5c8f297f9df142a406eea56227}{tap\_shortcut},      .auth = NULL \},
+    \{ .verb = \textcolor{stringliteral}{"on\_screen\_message"}, .session = AFB\_SESSION\_NONE,    .callback = 
+      \hyperlink{homescreen_8c_a640cf8ed97d804c5ed1c09a349056338}{on\_screen\_message}, .auth = NULL \},
+    \{ .verb = \textcolor{stringliteral}{"on\_screen\_reply"},   .session = AFB\_SESSION\_NONE,    .callback = 
+      \hyperlink{homescreen_8c_a2f380055d7d69828115d2a8951634933}{on\_screen\_reply},   .auth = NULL \},
+    \{ .verb = \textcolor{stringliteral}{"subscribe"},         .session = AFB\_SESSION\_NONE,    .callback = 
+      \hyperlink{homescreen_8c_a4ff0c8b506669e5622a6ee168134d8f1}{subscribe},         .auth = NULL \},
+    \{ .verb = \textcolor{stringliteral}{"unsubscribe"},       .session = AFB\_SESSION\_NONE,    .callback = 
+      \hyperlink{homescreen_8c_ab92621255d7370c6dd8a0f1a8e376ad3}{unsubscribe},       .auth = NULL \},
+    \{NULL \} 
+\}
+\end{DoxyCode}
+
+
+Definition at line 260 of file homescreen.\+c.
+

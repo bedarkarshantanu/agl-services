@@ -1,0 +1,501 @@
+pack("n")
+  SUCCESS null
+
+pack("b", 1)
+  SUCCESS true
+
+pack("b", 0)
+  SUCCESS false
+
+pack("i", 1)
+  SUCCESS 1
+
+pack("I", (uint64_t)0x123456789abcdef)
+  SUCCESS 81985529216486895
+
+pack("f", 3.14)
+  SUCCESS 3.1400000000000001
+
+pack("s", "test")
+  SUCCESS "test"
+
+pack("s?", "test")
+  SUCCESS "test"
+
+pack("s?", NULL)
+  SUCCESS null
+
+pack("s#", "test asdf", 4)
+  SUCCESS "test"
+
+pack("s%", "test asdf", (size_t)4)
+  SUCCESS "test"
+
+pack("s#", buffer, 4)
+  SUCCESS "test"
+
+pack("s%", buffer, (size_t)4)
+  SUCCESS "test"
+
+pack("s++", "te", "st", "ing")
+  SUCCESS "testing"
+
+pack("s#+#+", "test", 1, "test", 2, "test")
+  SUCCESS "ttetest"
+
+pack("s%+%+", "test", (size_t)1, "test", (size_t)2, "test")
+  SUCCESS "ttetest"
+
+pack("{}", 1.0)
+  SUCCESS { }
+
+pack("[]", 1.0)
+  SUCCESS [ ]
+
+pack("o", json_object_new_int(1))
+  SUCCESS 1
+
+pack("o?", json_object_new_int(1))
+  SUCCESS 1
+
+pack("o?", NULL)
+  SUCCESS null
+
+pack("O", json_object_new_int(1))
+  SUCCESS 1
+
+pack("O?", json_object_new_int(1))
+  SUCCESS 1
+
+pack("O?", NULL)
+  SUCCESS null
+
+pack("{s:[]}", "foo")
+  SUCCESS { "foo": [ ] }
+
+pack("{s+#+: []}", "foo", "barbar", 3, "baz")
+  SUCCESS { "foobarbaz": [ ] }
+
+pack("{s:s,s:o,s:O}", "a", NULL, "b", NULL, "c", NULL)
+  ERROR[char 6 err 10] string is NULL
+
+pack("{s:**}", "a", NULL)
+  ERROR[char 4 err 5] invalid character
+
+pack("{s:s*,s:o*,s:O*}", "a", NULL, "b", NULL, "c", NULL)
+  SUCCESS { }
+
+pack("[i,i,i]", 0, 1, 2)
+  SUCCESS [ 0, 1, 2 ]
+
+pack("[s,o,O]", NULL, NULL, NULL)
+  ERROR[char 4 err 10] string is NULL
+
+pack("[**]", NULL)
+  ERROR[char 2 err 5] invalid character
+
+pack("[s*,o*,O*]", NULL, NULL, NULL)
+  SUCCESS [ ]
+
+pack(" s ", "test")
+  SUCCESS "test"
+
+pack("[ ]")
+  SUCCESS [ ]
+
+pack("[ i , i,  i ] ", 1, 2, 3)
+  SUCCESS [ 1, 2, 3 ]
+
+pack("{\n\n1")
+  ERROR[char 4 err 5] invalid character
+
+pack("[}")
+  ERROR[char 2 err 5] invalid character
+
+pack("{]")
+  ERROR[char 2 err 5] invalid character
+
+pack("[")
+  ERROR[char 2 err 2] truncated
+
+pack("{")
+  ERROR[char 2 err 2] truncated
+
+pack("[i]a", 42)
+  ERROR[char 4 err 5] invalid character
+
+pack("ia", 42)
+  ERROR[char 2 err 5] invalid character
+
+pack("s", NULL)
+  ERROR[char 2 err 10] string is NULL
+
+pack("+", NULL)
+  ERROR[char 1 err 5] invalid character
+
+pack(NULL)
+  ERROR[char 1 err 8] spec is NULL
+
+pack("{s:i}", NULL, 1)
+  ERROR[char 4 err 10] string is NULL
+
+pack("{ {}: s }", "foo")
+  ERROR[char 3 err 5] invalid character
+
+pack("{ s: {},  s:[ii{} }", "foo", "bar", 12, 13)
+  ERROR[char 19 err 5] invalid character
+
+pack("[[[[[   [[[[[  [[[[ }]]]] ]]]] ]]]]]")
+  ERROR[char 21 err 5] invalid character
+
+pack("y", "???????hello>>>>>>>", (size_t)19)
+  SUCCESS "Pz8_Pz8_P2hlbGxvPj4-Pj4-Pg"
+
+pack("Y", "???????hello>>>>>>>", (size_t)19)
+  SUCCESS "Pz8\/Pz8\/P2hlbGxvPj4+Pj4+Pg"
+
+pack("{sy?}", "foo", "hi", (size_t)2)
+  SUCCESS { "foo": "aGk" }
+
+pack("{sy?}", "foo", NULL, 0)
+  SUCCESS { "foo": null }
+
+pack("{sy*}", "foo", "hi", (size_t)2)
+  SUCCESS { "foo": "aGk" }
+
+pack("{sy*}", "foo", NULL, 0)
+  SUCCESS { }
+
+unpack("true", "b", &xi[0])
+  SUCCESS b:1
+
+unpack("false", "b", &xi[0])
+  SUCCESS b:0
+
+unpack("null", "n")
+  SUCCESS n
+
+unpack("42", "i", &xi[0])
+  SUCCESS i:42
+
+unpack("123456789", "I", &xI[0])
+  SUCCESS I:123456789
+
+unpack("3.14", "f", &xf[0])
+  SUCCESS f:3.140000
+
+unpack("12345", "F", &xf[0])
+  SUCCESS F:12345.000000
+
+unpack("3.14", "F", &xf[0])
+  SUCCESS F:3.140000
+
+unpack("\"foo\"", "s", &xs[0])
+  SUCCESS s:foo
+
+unpack("\"foo\"", "s%", &xs[0], &xz[0])
+  SUCCESS s:foo %:3
+
+unpack("{}", "{}")
+  SUCCESS
+
+unpack("[]", "[]")
+  SUCCESS
+
+unpack("{}", "o", &xo[0])
+  SUCCESS o:{ }
+
+unpack("{}", "O", &xo[0])
+  SUCCESS O:{ }
+
+unpack("{\"foo\":42}", "{si}", "foo", &xi[0])
+  SUCCESS s:foo i:42
+
+unpack("[1,2,3]", "[i,i,i]", &xi[0], &xi[1], &xi[2])
+  SUCCESS i:1 i:2 i:3
+
+unpack("{\"a\":1,\"b\":2,\"c\":3}", "{s:i, s:i, s:i}", "a", &xi[0], "b", &xi[1], "c", &xi[2])
+  SUCCESS s:a i:1 s:b i:2 s:c i:3
+
+unpack("42", "z")
+  ERROR[char 1 err 5] invalid character
+
+unpack("null", "[i]")
+  ERROR[char 1 err 13] missfit of type
+
+unpack("[]", "[}")
+  ERROR[char 2 err 5] invalid character
+
+unpack("{}", "{]")
+  ERROR[char 2 err 5] invalid character
+
+unpack("[]", "[")
+  ERROR[char 2 err 11] array too small
+
+unpack("{}", "{")
+  ERROR[char 2 err 2] truncated
+
+unpack("[42]", "[i]a", &xi[0])
+  ERROR[char 4 err 5] invalid character
+
+unpack("42", "ia", &xi[0])
+  ERROR[char 2 err 5] invalid character
+
+unpack("[]", NULL)
+  ERROR[char 1 err 8] spec is NULL
+
+unpack("\"foo\"", "s", NULL)
+  SUCCESS s:(null)
+
+unpack("42", "s", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("42", "n")
+  ERROR[char 1 err 13] missfit of type
+
+unpack("42", "b", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("42", "f", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("42", "[i]", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("42", "{si}", "foo", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("\"foo\"", "n")
+  ERROR[char 1 err 13] missfit of type
+
+unpack("\"foo\"", "b", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("\"foo\"", "i", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("\"foo\"", "I", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("\"foo\"", "f", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("\"foo\"", "F", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("true", "s", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("true", "n")
+  ERROR[char 1 err 13] missfit of type
+
+unpack("true", "i", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("true", "I", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("true", "f", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("true", "F", NULL)
+  ERROR[char 1 err 13] missfit of type
+
+unpack("[42]", "[ii]", &xi[0], &xi[1])
+  ERROR[char 3 err 11] array too small
+
+unpack("{\"foo\":42}", "{si}", NULL, &xi[0])
+  ERROR[char 3 err 9] key is NULL
+
+unpack("{\"foo\":42}", "{si}", "baz", &xi[0])
+  ERROR[char 3 err 14] key not found
+
+unpack("[1,2,3]", "[iii!]", &xi[0], &xi[1], &xi[2])
+  SUCCESS i:1 i:2 i:3
+
+unpack("[1,2,3]", "[ii!]", &xi[0], &xi[1])
+  ERROR[char 5 err 12] incomplete container
+
+unpack("[1,2,3]", "[ii]", &xi[0], &xi[1])
+  SUCCESS i:1 i:2
+
+unpack("[1,2,3]", "[ii*]", &xi[0], &xi[1])
+  SUCCESS i:1 i:2
+
+unpack("{\"foo\":42,\"baz\":45}", "{sisi}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:45 s:foo i:42
+
+unpack("{\"foo\":42,\"baz\":45}", "{sisi*}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:45 s:foo i:42
+
+unpack("{\"foo\":42,\"baz\":45}", "{sisi!}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:45 s:foo i:42
+
+unpack("{\"foo\":42,\"baz\":45}", "{si}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:45
+
+unpack("{\"foo\":42,\"baz\":45}", "{si*}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:45
+
+unpack("{\"foo\":42,\"baz\":45}", "{si!}", "baz", &xi[0], "foo", &xi[1])
+  ERROR[char 5 err 12] incomplete container
+
+unpack("[1,{\"foo\":2,\"bar\":null},[3,4]]", "[i{sisn}[ii]]", &xi[0], "foo", &xi[1], "bar", &xi[2], &xi[3])
+  SUCCESS i:1 s:foo i:2 s:bar n i:3 i:4
+
+unpack("[1,2,3]", "[ii!i]", &xi[0], &xi[1], &xi[2])
+  ERROR[char 5 err 5] invalid character
+
+unpack("[1,2,3]", "[ii*i]", &xi[0], &xi[1], &xi[2])
+  ERROR[char 5 err 5] invalid character
+
+unpack("{\"foo\":1,\"bar\":2}", "{si!si}", "foo", &xi[1], "bar", &xi[2])
+  ERROR[char 5 err 5] invalid character
+
+unpack("{\"foo\":1,\"bar\":2}", "{si*si}", "foo", &xi[1], "bar", &xi[2])
+  ERROR[char 5 err 5] invalid character
+
+unpack("{\"foo\":{\"baz\":null,\"bar\":null}}", "{s{sn!}}", "foo", "bar")
+  ERROR[char 7 err 12] incomplete container
+
+unpack("[[1,2,3]]", "[[ii!]]", &xi[0], &xi[1])
+  ERROR[char 6 err 12] incomplete container
+
+unpack("{}", "{s?i}", "foo", &xi[0])
+  SUCCESS s:foo i:0
+
+unpack("{\"foo\":1}", "{s?i}", "foo", &xi[0])
+  SUCCESS s:foo i:1
+
+unpack("{}", "{s?[ii]s?{s{si!}}}", "foo", &xi[0], &xi[1], "bar", "baz", "quux", &xi[2])
+  SUCCESS s:foo i:0 i:0 s:bar s:baz s:quux i:0
+
+unpack("{\"foo\":[1,2]}", "{s?[ii]s?{s{si!}}}", "foo", &xi[0], &xi[1], "bar", "baz", "quux", &xi[2])
+  SUCCESS s:foo i:1 i:2 s:bar s:baz s:quux i:0
+
+unpack("{\"bar\":{\"baz\":{\"quux\":15}}}", "{s?[ii]s?{s{si!}}}", "foo", &xi[0], &xi[1], "bar", "baz", "quux", &xi[2])
+  SUCCESS s:foo i:0 i:0 s:bar s:baz s:quux i:15
+
+unpack("{\"foo\":{\"bar\":4}}", "{s?{s?i}}", "foo", "bar", &xi[0])
+  SUCCESS s:foo s:bar i:4
+
+unpack("{\"foo\":{}}", "{s?{s?i}}", "foo", "bar", &xi[0])
+  SUCCESS s:foo s:bar i:0
+
+unpack("{}", "{s?{s?i}}", "foo", "bar", &xi[0])
+  SUCCESS s:foo s:bar i:0
+
+unpack("{\"foo\":42,\"baz\":45}", "{s?isi!}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:45 s:foo i:42
+
+unpack("{\"foo\":42}", "{s?isi!}", "baz", &xi[0], "foo", &xi[1])
+  SUCCESS s:baz i:0 s:foo i:42
+
+unpack("\"Pz8_Pz8_P2hlbGxvPj4-Pj4-Pg\"", "y", &xy[0], &xz[0])
+  SUCCESS y/19:???????hello>>>>>>>
+
+unpack("\"\"", "y", &xy[0], &xz[0])
+  SUCCESS y/0:
+
+unpack("null", "y", &xy[0], &xz[0])
+  SUCCESS y/0:
+
+unpack("{\"foo\":\"Pz8_Pz8_P2hlbGxvPj4-Pj4-Pg\"}", "{s?y}", "foo", &xy[0], &xz[0])
+  SUCCESS s:foo y/19:???????hello>>>>>>>
+
+unpack("{\"foo\":\"\"}", "{s?y}", "foo", &xy[0], &xz[0])
+  SUCCESS s:foo y/0:
+
+unpack("{}", "{s?y}", "foo", &xy[0], &xz[0])
+  SUCCESS s:foo y/0:
+
+compare(null)(null)
+   -> 0 / 1
+
+compare(true)(true)
+   -> 0 / 1
+
+compare(false)(false)
+   -> 0 / 1
+
+compare(1)(1)
+   -> 0 / 1
+
+compare(1.0)(1.0)
+   -> 0 / 1
+
+compare("")("")
+   -> 0 / 1
+
+compare("hi")("hi")
+   -> 0 / 1
+
+compare({})({})
+   -> 0 / 1
+
+compare({"a":true,"b":false})({"b":false,"a":true})
+   -> 0 / 1
+
+compare([])([])
+   -> 0 / 1
+
+compare([1,true,null])([1,true,null])
+   -> 0 / 1
+
+compare(null)(true)
+   -> -1 / 0
+
+compare(null)(false)
+   -> -1 / 0
+
+compare(0)(1)
+   -> -1 / 0
+
+compare(1)(0)
+   -> 1 / 0
+
+compare(0)(true)
+   -> 2 / 0
+
+compare(0)(false)
+   -> 2 / 0
+
+compare(0)(null)
+   -> 3 / 0
+
+compare("hi")("hello")
+   -> 4 / 0
+
+compare("hello")("hi")
+   -> -4 / 0
+
+compare({})(null)
+   -> 4 / 0
+
+compare({})(true)
+   -> 3 / 0
+
+compare({})(1)
+   -> 1 / 0
+
+compare({})(1.0)
+   -> 2 / 0
+
+compare({})([])
+   -> -1 / 0
+
+compare({})("x")
+   -> -2 / 0
+
+compare([1,true,null])([1,true])
+   -> 1 / 1
+
+compare({"a":true,"b":false})({"a":true})
+   -> 1 / 1
+
+compare({"a":true,"b":false})({"a":true,"c":false})
+   -> -1 / 0
+
+compare({"a":true,"c":false})({"a":true,"b":false})
+   -> 1 / 0
+

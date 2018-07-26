@@ -1,0 +1,35 @@
+# gdb-remote.init file for IDE
+# Object: allow to use standard gdb to remote debug a target
+# Usage: remote-target-populate update script under ./build directory
+# Author: Fulup Ar Foll (IoT.bzh)
+# Reference: https://blog.flameeyes.eu/2010/02/remote-debugging-with-gdb-part-2-gdb/
+#
+# Warning: In remote native mode netbeans impose debug-command to point on a local instance of afb-daemon binary
+
+# Fulup Hoops: --ldpath should be absolute as solib-search-path refuse to work as documented
+
+# Start gdbserver on target and connect through SSH link WARNING:
+target remote | ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null @RSYNC_TARGET@ gdbserver - afb-daemon --port=@AFB_REMPORT@ --workdir=$HOME/@RSYNC_PREFIX@/@PROJECT_NAME@ --roothttp=htdocs --ldpaths=$HOME/@RSYNC_PREFIX@/@PROJECT_NAME@/lib --verbose --token=@AFB_TOKEN@
+
+# Disable auto answer no on questions and to set breakpoint
+set confirm off
+
+# Disable auto load of libraries to improved perf
+set auto-solib-add off
+
+# Define path for project libraries
+set solib-search-path ${PROJECT_PKG_BUILD_DIR}
+
+# Replace run by continue (gdb use 'run' when gdbserver wants 'continue')
+define run
+continue
+end
+
+# Manually load project libraries when loaded by afb-daemon
+tbreak @GDB_INITIAL_BREAK@
+commands
+sharedlibrary @RSYNC_PREFIX@/@PROJECT_NAME@
+continue
+end
+
+

@@ -1,0 +1,732 @@
+\hypertarget{class_lib_home_screen}{}\section{Lib\+Home\+Screen Class Reference}
+\label{class_lib_home_screen}\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+
+
+{\ttfamily \#include $<$libhomescreen.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154}{Event\+Type} \{ \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}{Event\+\_\+\+Tap\+Shortcut} = 1, 
+\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}{Event\+\_\+\+On\+Screen\+Message}, 
+\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}{Event\+\_\+\+On\+Screen\+Reply}
+ \}
+\item 
+using \hyperlink{class_lib_home_screen_a334f11f81c84c98d18284215dcaada3a}{handler\+\_\+func} = std\+::function$<$ void(json\+\_\+object $\ast$)$>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lib_home_screen_a724bd949c4154fad041f96a15ef0f5dc}{Lib\+Home\+Screen} ()
+\item 
+\hyperlink{class_lib_home_screen_a249902aebf71a5383ca8ec6ae558d095}{$\sim$\+Lib\+Home\+Screen} ()
+\item 
+\hyperlink{class_lib_home_screen_a0fff2f703c8ce184eb9edd133e0f4137}{Lib\+Home\+Screen} (const \hyperlink{class_lib_home_screen}{Lib\+Home\+Screen} \&)=delete
+\item 
+\hyperlink{class_lib_home_screen}{Lib\+Home\+Screen} \& \hyperlink{class_lib_home_screen_a23bc17798453cfca50904562736f6b25}{operator=} (const \hyperlink{class_lib_home_screen}{Lib\+Home\+Screen} \&)=delete
+\item 
+int \hyperlink{class_lib_home_screen_a6a57b573cc767725762ba9beab032220}{init} (const int port, const std\+::string \&token)
+\item 
+int \hyperlink{class_lib_home_screen_afb571c9577087b47065eb23e7fdbc903}{tap\+Shortcut} (const char $\ast$application\+\_\+name)
+\item 
+int \hyperlink{class_lib_home_screen_ac336482036a72b51a822725f1929523c}{on\+Screen\+Message} (const char $\ast$display\+\_\+message)
+\item 
+int \hyperlink{class_lib_home_screen_a6c065f41f2c5d1f58d2763bfb4da9c37}{on\+Screen\+Reply} (const char $\ast$reply\+\_\+message)
+\item 
+void \hyperlink{class_lib_home_screen_ab1b0e08bf35415de9064afed899e9f85}{set\+\_\+event\+\_\+handler} (enum \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154}{Event\+Type} et, \hyperlink{class_lib_home_screen_a334f11f81c84c98d18284215dcaada3a}{handler\+\_\+func} f)
+\item 
+void \hyperlink{class_lib_home_screen_a2789e8a5372202cc36f48e71dbb9b7cf}{register\+Callback} (void($\ast$event\+\_\+cb)(const std\+::string \&\hyperlink{structevent}{event}, struct json\+\_\+object $\ast$event\+\_\+contents), void($\ast$reply\+\_\+cb)(struct json\+\_\+object $\ast$reply\+\_\+contents), void($\ast$hangup\+\_\+cb)(void)=nullptr)
+\item 
+int \hyperlink{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}{call} (const std\+::string \&verb, struct json\+\_\+object $\ast$arg)
+\item 
+int \hyperlink{class_lib_home_screen_ab5e8e8ab7d53e0f114e9e907fcbb7643}{call} (const char $\ast$verb, struct json\+\_\+object $\ast$arg)
+\item 
+int \hyperlink{class_lib_home_screen_aa4c189807b75d070f567967f0d690738}{subscribe} (const std\+::string \&event\+\_\+name)
+\item 
+int \hyperlink{class_lib_home_screen_aac03a45cbd453ba69ddb00c1016930a6}{unsubscribe} (const std\+::string \&event\+\_\+name)
+\item 
+void \hyperlink{class_lib_home_screen_ab1c1fa69f24b981e824dd9fb810c4b74}{on\+\_\+hangup} (void $\ast$closure, struct afb\+\_\+wsj1 $\ast$wsj)
+\item 
+void \hyperlink{class_lib_home_screen_a608638eb87b2772a3dcc92d8ca8f3596}{on\+\_\+call} (void $\ast$closure, const char $\ast$api, const char $\ast$verb, struct afb\+\_\+wsj1\+\_\+msg $\ast$msg)
+\item 
+void \hyperlink{class_lib_home_screen_a9c4885b51b43ab24a548d49fb3ab2de3}{on\+\_\+event} (void $\ast$closure, const char $\ast$\hyperlink{structevent}{event}, struct afb\+\_\+wsj1\+\_\+msg $\ast$msg)
+\item 
+void \hyperlink{class_lib_home_screen_a248d9648c6186287a7632ec1c75fc9c5}{on\+\_\+reply} (void $\ast$closure, struct afb\+\_\+wsj1\+\_\+msg $\ast$msg)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::vector$<$ std\+::string $>$ \hyperlink{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}{api\+\_\+list}
+\item 
+static const std\+::vector$<$ std\+::string $>$ \hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{event\+\_\+list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 32 of file libhomescreen.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_lib_home_screen_a334f11f81c84c98d18284215dcaada3a}\label{class_lib_home_screen_a334f11f81c84c98d18284215dcaada3a}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!handler\+\_\+func@{handler\+\_\+func}}
+\index{handler\+\_\+func@{handler\+\_\+func}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{handler\+\_\+func}{handler\_func}}
+{\footnotesize\ttfamily using \hyperlink{class_lib_home_screen_a334f11f81c84c98d18284215dcaada3a}{Lib\+Home\+Screen\+::handler\+\_\+func} =  std\+::function$<$void(json\+\_\+object$\ast$)$>$}
+
+
+
+Definition at line 42 of file libhomescreen.\+hpp.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154}\label{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Event\+Type@{Event\+Type}}
+\index{Event\+Type@{Event\+Type}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{Event\+Type}{EventType}}
+{\footnotesize\ttfamily enum \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154}{Lib\+Home\+Screen\+::\+Event\+Type}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Event\+\_\+\+Tap\+Shortcut@{Event\+\_\+\+Tap\+Shortcut}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Event\+\_\+\+Tap\+Shortcut@{Event\+\_\+\+Tap\+Shortcut}}}\mbox{\Hypertarget{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}\label{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}} 
+Event\+\_\+\+Tap\+Shortcut&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Event\+\_\+\+On\+Screen\+Message@{Event\+\_\+\+On\+Screen\+Message}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Event\+\_\+\+On\+Screen\+Message@{Event\+\_\+\+On\+Screen\+Message}}}\mbox{\Hypertarget{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}\label{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}} 
+Event\+\_\+\+On\+Screen\+Message&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Event\+\_\+\+On\+Screen\+Reply@{Event\+\_\+\+On\+Screen\+Reply}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Event\+\_\+\+On\+Screen\+Reply@{Event\+\_\+\+On\+Screen\+Reply}}}\mbox{\Hypertarget{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}\label{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}} 
+Event\+\_\+\+On\+Screen\+Reply&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 44 of file libhomescreen.\+hpp.
+
+
+\begin{DoxyCode}
+44                        \{
+45             \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}{Event\_TapShortcut} = 1,
+46             \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}{Event\_OnScreenMessage},
+47             \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}{Event\_OnScreenReply}
+48         \};
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lib_home_screen_a724bd949c4154fad041f96a15ef0f5dc}\label{class_lib_home_screen_a724bd949c4154fad041f96a15ef0f5dc}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{Lib\+Home\+Screen()}{LibHomeScreen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Lib\+Home\+Screen\+::\+Lib\+Home\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+constructor 
+
+Definition at line 83 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+84 \{
+85 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a249902aebf71a5383ca8ec6ae558d095}\label{class_lib_home_screen_a249902aebf71a5383ca8ec6ae558d095}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!````~Lib\+Home\+Screen@{$\sim$\+Lib\+Home\+Screen}}
+\index{````~Lib\+Home\+Screen@{$\sim$\+Lib\+Home\+Screen}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{$\sim$\+Lib\+Home\+Screen()}{~LibHomeScreen()}}
+{\footnotesize\ttfamily Lib\+Home\+Screen\+::$\sim$\+Lib\+Home\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+destructor 
+
+Definition at line 90 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+91 \{
+92     \textcolor{keywordflow}{if}(mploop)
+93     \{
+94         sd\_event\_unref(mploop);
+95     \}
+96     \textcolor{keywordflow}{if}(sp\_websock != NULL)
+97     \{
+98         afb\_wsj1\_unref(sp\_websock);
+99     \}
+100 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a0fff2f703c8ce184eb9edd133e0f4137}\label{class_lib_home_screen_a0fff2f703c8ce184eb9edd133e0f4137}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{Lib\+Home\+Screen()}{LibHomeScreen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Lib\+Home\+Screen\+::\+Lib\+Home\+Screen (\begin{DoxyParamCaption}\item[{const \hyperlink{class_lib_home_screen}{Lib\+Home\+Screen} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}\label{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!call@{call}}
+\index{call@{call}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{call()}{call()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::call (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{verb,  }\item[{struct json\+\_\+object $\ast$}]{arg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_lib_home_screen_ab5e8e8ab7d53e0f114e9e907fcbb7643}\label{class_lib_home_screen_ab5e8e8ab7d53e0f114e9e907fcbb7643}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!call@{call}}
+\index{call@{call}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{call()}{call()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::call (\begin{DoxyParamCaption}\item[{const char $\ast$}]{verb,  }\item[{struct json\+\_\+object $\ast$}]{arg }\end{DoxyParamCaption})}
+
+This function calls the A\+PI of Home\+Screen via Web\+Socket This function is overload function of \char`\"{}call\char`\"{}
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item verb \mbox{[}in\mbox{]} \+: This argument should be specified to the A\+PI name (e.\+g. \char`\"{}tap\+\_\+shortcut\char`\"{})
+\item arg \mbox{[}in\mbox{]} \+: This argument should be specified to the argument of A\+PI. And this argument expects J\+S\+ON object
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+
+\begin{DoxyItemize}
+\item Returns 0 on success or -\/1 in case of error.
+\end{DoxyItemize}
+
+\subparagraph*{Note}
+
+To call Home\+Screen\textquotesingle{}s A\+P\+Is, the application should set its function name, arguments to J\+S\+ON format. 
+
+Definition at line 360 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+361 \{
+362     \textcolor{keywordtype}{int} ret;
+363     \textcolor{keywordflow}{if}(!sp\_websock)
+364     \{
+365         \textcolor{keywordflow}{return} -1;
+366     \}
+367     \textcolor{keywordflow}{if} (!\hyperlink{libhomescreen_8cpp_a7a2176c3d71fec0f09dcb2aa0866b17e}{has\_verb}(\textcolor{keywordtype}{string}(verb)))
+368     \{
+369         \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{HMI\_ERROR}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"verb doesn't exit"});
+370         \textcolor{keywordflow}{return} -1;
+371     \}
+372     ret = afb\_wsj1\_call\_j(sp\_websock, \hyperlink{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}{API}, verb, arg, \hyperlink{libhomescreen_8cpp_a7778933bffa862c63fa0a1b8219faa8b}{\_on\_reply\_static}, \textcolor{keyword}{this});
+373     \textcolor{keywordflow}{if} (ret < 0) \{
+374         \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{HMI\_ERROR}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"Failed to call verb:%s"},verb);
+375     \}
+376     \textcolor{keywordflow}{return} ret;
+377 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a6a57b573cc767725762ba9beab032220}\label{class_lib_home_screen_a6a57b573cc767725762ba9beab032220}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!init@{init}}
+\index{init@{init}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::init (\begin{DoxyParamCaption}\item[{const int}]{port,  }\item[{const std\+::string \&}]{token }\end{DoxyParamCaption})}
+
+This function is initializer
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item port \mbox{[}in\mbox{]} \+: This argument should be specified to the port number to be used for websocket
+\item token \mbox{[}in\mbox{]} \+: This argument should be specified to the token to be used for websocket
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing
+
+\subparagraph*{Note}
+
+Use this constructor 
+
+Definition at line 116 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+117 \{
+118     \textcolor{keywordtype}{int} ret = 0;
+119     \textcolor{keywordflow}{if}(port > 0 && token.size() > 0)
+120     \{
+121         mport = port;
+122         mtoken = token;
+123     \}
+124     \textcolor{keywordflow}{else}
+125     \{
+126         \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{HMI\_ERROR}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"port and token should be > 0, Initial port and token uses."});
+127     \}
+128 
+129     ret = initialize\_websocket();
+130     \textcolor{keywordflow}{if}(ret != 0 )
+131     \{
+132         \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{HMI\_ERROR}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"Failed to initialize websocket"});
+133     \}
+134     \textcolor{keywordflow}{else}\{
+135         \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{HMI\_DEBUG}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"Initialized"});
+136     \}
+137 
+138     \textcolor{keywordflow}{return} ret;
+139 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a608638eb87b2772a3dcc92d8ca8f3596}\label{class_lib_home_screen_a608638eb87b2772a3dcc92d8ca8f3596}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!on\+\_\+call@{on\+\_\+call}}
+\index{on\+\_\+call@{on\+\_\+call}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{on\+\_\+call()}{on\_call()}}
+{\footnotesize\ttfamily void Lib\+Home\+Screen\+::on\+\_\+call (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{const char $\ast$}]{api,  }\item[{const char $\ast$}]{verb,  }\item[{struct afb\+\_\+wsj1\+\_\+msg $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 448 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+449 \{
+450 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a9c4885b51b43ab24a548d49fb3ab2de3}\label{class_lib_home_screen_a9c4885b51b43ab24a548d49fb3ab2de3}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!on\+\_\+event@{on\+\_\+event}}
+\index{on\+\_\+event@{on\+\_\+event}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{on\+\_\+event()}{on\_event()}}
+{\footnotesize\ttfamily void Lib\+Home\+Screen\+::on\+\_\+event (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{const char $\ast$}]{event,  }\item[{struct afb\+\_\+wsj1\+\_\+msg $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 458 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+459 \{
+460     \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{HMI\_DEBUG}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"event: (%s) msg: (%s)."}, \hyperlink{structevent}{event}, afb\_wsj1\_msg\_object\_s(msg));
+461 
+462     \textcolor{keywordflow}{if} (strstr(\hyperlink{structevent}{event}, \hyperlink{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}{API}) == NULL) \{
+463         \textcolor{keywordflow}{return};
+464     \}
+465 
+466     \textcolor{keyword}{struct }json\_object* ev\_contents = afb\_wsj1\_msg\_object\_j(msg);
+467     \textcolor{keyword}{struct }json\_object *json\_data = json\_object\_object\_get(ev\_contents, \textcolor{stringliteral}{"data"});
+468 
+469     \textcolor{keywordflow}{if}(onEvent != \textcolor{keyword}{nullptr})
+470     \{
+471         \textcolor{keyword}{const} \textcolor{keywordtype}{string} ev(\hyperlink{structevent}{event});
+472         onEvent(ev, ev\_contents);
+473     \}
+474 
+475     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* event\_only = strchr(\hyperlink{structevent}{event}, \textcolor{charliteral}{'/'});
+476     \textcolor{keywordflow}{if} (event\_only != \textcolor{keyword}{nullptr}) \{
+477         event\_only = event\_only + 1;
+478     \}
+479 
+480     \textcolor{keywordflow}{if} (strcasecmp(event\_only, \hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{LibHomeScreen::event\_list}[0].c\_str()) == 0) \{
+481         \textcolor{keyword}{auto} i = this->handlers.find(\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}{Event\_TapShortcut});
+482         \textcolor{keywordflow}{if} ( i != this->handlers.end() ) \{
+483             i->second(json\_data);
+484         \}
+485     \}
+486     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcasecmp(event\_only, \hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{LibHomeScreen::event\_list}[1].c\_str()) == 0) \{
+487         \textcolor{keyword}{auto} i = this->handlers.find(\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}{Event\_OnScreenMessage});
+488         \textcolor{keywordflow}{if} ( i != this->handlers.end() ) \{
+489             i->second(json\_data);
+490         \}
+491     \}
+492     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcasecmp(event\_only, \hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{LibHomeScreen::event\_list}[2].c\_str()) == 0) \{
+493         \textcolor{keyword}{auto} i = this->handlers.find(\hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}{Event\_OnScreenReply});
+494         \textcolor{keywordflow}{if} ( i != this->handlers.end() ) \{
+495             i->second(json\_data);
+496         \}
+497     \}
+498 
+499     json\_object\_put(ev\_contents);
+500 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_ab1c1fa69f24b981e824dd9fb810c4b74}\label{class_lib_home_screen_ab1c1fa69f24b981e824dd9fb810c4b74}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!on\+\_\+hangup@{on\+\_\+hangup}}
+\index{on\+\_\+hangup@{on\+\_\+hangup}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{on\+\_\+hangup()}{on\_hangup()}}
+{\footnotesize\ttfamily void Lib\+Home\+Screen\+::on\+\_\+hangup (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{struct afb\+\_\+wsj1 $\ast$}]{wsj }\end{DoxyParamCaption})}
+
+
+
+Definition at line 439 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+440 \{
+441     \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{HMI\_DEBUG}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"%s called"}, \_\_FUNCTION\_\_);
+442     \textcolor{keywordflow}{if}(onHangup != \textcolor{keyword}{nullptr})
+443     \{
+444         onHangup();
+445     \}
+446 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a248d9648c6186287a7632ec1c75fc9c5}\label{class_lib_home_screen_a248d9648c6186287a7632ec1c75fc9c5}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!on\+\_\+reply@{on\+\_\+reply}}
+\index{on\+\_\+reply@{on\+\_\+reply}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{on\+\_\+reply()}{on\_reply()}}
+{\footnotesize\ttfamily void Lib\+Home\+Screen\+::on\+\_\+reply (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{struct afb\+\_\+wsj1\+\_\+msg $\ast$}]{msg }\end{DoxyParamCaption})}
+
+msg is like (\{\char`\"{}response\char`\"{}\+:\{\char`\"{}verb\char`\"{}\+:\char`\"{}subscribe\char`\"{},\char`\"{}error\char`\"{}\+:0\},\char`\"{}jtype\char`\"{}\+:\char`\"{}afb-\/reply\char`\"{},\char`\"{}request\char`\"{}\+:\{\char`\"{}status\char`\"{}\+:\char`\"{}success\char`\"{},\char`\"{}info\char`\"{}\+:\char`\"{}homescreen binder subscribe event name \mbox{[}on\+\_\+screen\+\_\+message\mbox{]}\char`\"{}\}\}) msg is like (\{\char`\"{}response\char`\"{}\+:\{\char`\"{}verb\char`\"{}\+:\char`\"{}tap\+\_\+shortcut\char`\"{},\char`\"{}error\char`\"{}\+:0\},\char`\"{}jtype\char`\"{}\+:\char`\"{}afb-\/reply\char`\"{},\char`\"{}request\char`\"{}\+:\{\char`\"{}status\char`\"{}\+:\char`\"{}success\char`\"{},\char`\"{}info\char`\"{}\+:\char`\"{}afb\+\_\+event\+\_\+push event \mbox{[}tap\+\_\+shortcut\mbox{]}\char`\"{}\}\}) 
+
+Definition at line 506 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+507 \{
+508     \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{HMI\_DEBUG}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"msg: (%s)"}, afb\_wsj1\_msg\_object\_s(msg));
+509     \textcolor{keywordflow}{if}(onReply != \textcolor{keyword}{nullptr})
+510     \{
+511         \textcolor{keyword}{struct }json\_object* reply = afb\_wsj1\_msg\_object\_j(msg);
+512         onReply(reply);
+513 
+514         json\_object\_put(reply);
+515     \}
+516 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_ac336482036a72b51a822725f1929523c}\label{class_lib_home_screen_ac336482036a72b51a822725f1929523c}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!on\+Screen\+Message@{on\+Screen\+Message}}
+\index{on\+Screen\+Message@{on\+Screen\+Message}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{on\+Screen\+Message()}{onScreenMessage()}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::on\+Screen\+Message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{display\+\_\+message }\end{DoxyParamCaption})}
+
+Sending on\+Screen message event
+
+Sending On\+Screen message event to Home\+Screen from applications
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item display\+\_\+message \mbox{[}in\mbox{]} \+: message for display
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+
+\begin{DoxyItemize}
+\item Returns 0 on success or -\/1 in case of error. 
+\end{DoxyItemize}
+
+Definition at line 244 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+245 \{
+246     \textcolor{keywordflow}{if}(!sp\_websock)
+247     \{
+248         \textcolor{keywordflow}{return} -1;
+249     \}
+250 
+251     \textcolor{keyword}{struct }json\_object* j\_obj = json\_object\_new\_object();
+252     \textcolor{keyword}{struct }json\_object* val = json\_object\_new\_string(display\_message);
+253     json\_object\_object\_add(j\_obj, \textcolor{stringliteral}{"display\_message"}, val);
+254     \textcolor{keywordflow}{return} this->\hyperlink{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}{call}(\textcolor{stringliteral}{"on\_screen\_message"}, j\_obj);
+255 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a6c065f41f2c5d1f58d2763bfb4da9c37}\label{class_lib_home_screen_a6c065f41f2c5d1f58d2763bfb4da9c37}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!on\+Screen\+Reply@{on\+Screen\+Reply}}
+\index{on\+Screen\+Reply@{on\+Screen\+Reply}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{on\+Screen\+Reply()}{onScreenReply()}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::on\+Screen\+Reply (\begin{DoxyParamCaption}\item[{const char $\ast$}]{reply\+\_\+message }\end{DoxyParamCaption})}
+
+Sending on\+Screen reply event
+
+Sending On\+Screen reply event to applications from Home\+Screen
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item reply\+\_\+message \mbox{[}in\mbox{]} \+: message for reply
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+
+\begin{DoxyItemize}
+\item Returns 0 on success or -\/1 in case of error. 
+\end{DoxyItemize}
+
+Definition at line 268 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+269 \{
+270     \textcolor{keywordflow}{if}(!sp\_websock)
+271     \{
+272         \textcolor{keywordflow}{return} -1;
+273     \}
+274 
+275     \textcolor{keyword}{struct }json\_object* j\_obj = json\_object\_new\_object();
+276     \textcolor{keyword}{struct }json\_object* val = json\_object\_new\_string(reply\_message);
+277     json\_object\_object\_add(j\_obj, \textcolor{stringliteral}{"reply\_message"}, val);
+278     \textcolor{keywordflow}{return} this->\hyperlink{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}{call}(\textcolor{stringliteral}{"on\_screen\_reply"}, j\_obj);
+279 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_a23bc17798453cfca50904562736f6b25}\label{class_lib_home_screen_a23bc17798453cfca50904562736f6b25}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!operator=@{operator=}}
+\index{operator=@{operator=}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_lib_home_screen}{Lib\+Home\+Screen}\& Lib\+Home\+Screen\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_lib_home_screen}{Lib\+Home\+Screen} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_lib_home_screen_a2789e8a5372202cc36f48e71dbb9b7cf}\label{class_lib_home_screen_a2789e8a5372202cc36f48e71dbb9b7cf}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!register\+Callback@{register\+Callback}}
+\index{register\+Callback@{register\+Callback}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{register\+Callback()}{registerCallback()}}
+{\footnotesize\ttfamily void Lib\+Home\+Screen\+::register\+Callback (\begin{DoxyParamCaption}\item[{void($\ast$)(const std\+::string \&\hyperlink{structevent}{event}, struct json\+\_\+object $\ast$event\+\_\+contents)}]{event\+\_\+cb,  }\item[{void($\ast$)(struct json\+\_\+object $\ast$reply\+\_\+contents)}]{reply\+\_\+cb,  }\item[{void($\ast$)(void)}]{hangup\+\_\+cb = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+This function register callback function for reply/event message from home screen
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item event\+\_\+cb \mbox{[}in\mbox{]} \+: This argument should be specified to the callback for subscribed event
+\item reply\+\_\+cb \mbox{[}in\mbox{]} \+: This argument should be specified to the reply callback for call function
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing
+
+\subparagraph*{Note}
+
+Event callback is invoked by home screen for event you subscribed. If you would like to get event, please call subscribe function before/after this function 
+
+Definition at line 155 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+159 \{
+160     onEvent = event\_cb;
+161     onReply = reply\_cb;
+162     onHangup = hangup\_cb;
+163 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_ab1b0e08bf35415de9064afed899e9f85}\label{class_lib_home_screen_ab1b0e08bf35415de9064afed899e9f85}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!set\+\_\+event\+\_\+handler@{set\+\_\+event\+\_\+handler}}
+\index{set\+\_\+event\+\_\+handler@{set\+\_\+event\+\_\+handler}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{set\+\_\+event\+\_\+handler()}{set\_event\_handler()}}
+{\footnotesize\ttfamily void Lib\+Home\+Screen\+::set\+\_\+event\+\_\+handler (\begin{DoxyParamCaption}\item[{enum \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154}{Event\+Type}}]{et,  }\item[{\hyperlink{class_lib_home_screen_a334f11f81c84c98d18284215dcaada3a}{handler\+\_\+func}}]{f }\end{DoxyParamCaption})}
+
+Setting Event Handler
+
+Setting event handler for Homescreen
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item et \mbox{[}in\mbox{]} \+: event name
+\item f \mbox{[}in\mbox{]} \+: event handler
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+Nothing 
+
+Definition at line 293 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+294 \{
+295     \textcolor{keywordflow}{if} (et >= 1 && et <= 3) \{
+296         \textcolor{keywordflow}{switch} (et) \{
+297             \textcolor{keywordflow}{case} \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154a4b0a82d501e4db5fbfe25c254c92896f}{Event\_TapShortcut}:
+298                 this->\hyperlink{class_lib_home_screen_aa4c189807b75d070f567967f0d690738}{subscribe}(\hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{LibHomeScreen::event\_list}[0]);
+299                 \textcolor{keywordflow}{break};
+300             \textcolor{keywordflow}{case} \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154aea56fa32a124a8ddcbea127755280a1d}{Event\_OnScreenMessage}:
+301                 this->\hyperlink{class_lib_home_screen_aa4c189807b75d070f567967f0d690738}{subscribe}(\hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{LibHomeScreen::event\_list}[1]);
+302                 \textcolor{keywordflow}{break};
+303             \textcolor{keywordflow}{case} \hyperlink{class_lib_home_screen_a82616c91ac211d2ad08e709b524bf154acae91db4efc2394fd701f581d277a3fd}{Event\_OnScreenReply}:
+304                 this->\hyperlink{class_lib_home_screen_aa4c189807b75d070f567967f0d690738}{subscribe}(\hyperlink{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}{LibHomeScreen::event\_list}[2]);
+305                 \textcolor{keywordflow}{break};
+306         \}
+307 
+308         this->handlers[et] = std::move(f);
+309     \}
+310 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_aa4c189807b75d070f567967f0d690738}\label{class_lib_home_screen_aa4c189807b75d070f567967f0d690738}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{subscribe()}{subscribe()}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::subscribe (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event\+\_\+name }\end{DoxyParamCaption})}
+
+Register callback function for each event
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item event\+\_\+name \mbox{[}in\mbox{]} \+: This argument should be specified to the event name
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+
+\begin{DoxyItemize}
+\item Returns 0 on success or -\/1 in case of error.
+\end{DoxyItemize}
+
+\subparagraph*{Note}
+
+This function enables to get an event to your callback function. 
+
+Definition at line 392 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+393 \{
+394     \textcolor{keywordflow}{if}(!sp\_websock)
+395     \{
+396         \textcolor{keywordflow}{return} -1;
+397     \}
+398     \textcolor{keyword}{struct }json\_object* j\_obj = json\_object\_new\_object();
+399     json\_object\_object\_add(j\_obj, \textcolor{stringliteral}{"event"}, json\_object\_new\_string(event\_name.c\_str()));
+400 
+401     \textcolor{keywordtype}{int} ret = afb\_wsj1\_call\_j(sp\_websock, \hyperlink{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}{API}, \textcolor{stringliteral}{"subscribe"}, j\_obj, 
+      \hyperlink{libhomescreen_8cpp_a7778933bffa862c63fa0a1b8219faa8b}{\_on\_reply\_static}, \textcolor{keyword}{this});
+402     \textcolor{keywordflow}{if} (ret < 0) \{
+403         \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{HMI\_ERROR}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"Failed to call verb:%s"},\_\_FUNCTION\_\_);
+404     \}
+405     \textcolor{keywordflow}{return} ret;
+406 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_afb571c9577087b47065eb23e7fdbc903}\label{class_lib_home_screen_afb571c9577087b47065eb23e7fdbc903}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!tap\+Shortcut@{tap\+Shortcut}}
+\index{tap\+Shortcut@{tap\+Shortcut}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{tap\+Shortcut()}{tapShortcut()}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::tap\+Shortcut (\begin{DoxyParamCaption}\item[{const char $\ast$}]{application\+\_\+name }\end{DoxyParamCaption})}
+
+Sending Short\+Cut Icon tapped event
+
+When Home\+Screen shortcut area is tapped, sending a event
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item application\+\_\+name \mbox{[}in\mbox{]} \+: Tapped application name (label)
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+
+\begin{DoxyItemize}
+\item Returns 0 on success or -\/1 in case of error. 
+\end{DoxyItemize}
+
+Definition at line 220 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+221 \{
+222     \textcolor{keywordflow}{if}(!sp\_websock)
+223     \{
+224         \textcolor{keywordflow}{return} -1;
+225     \}
+226 
+227     \textcolor{keyword}{struct }json\_object* j\_obj = json\_object\_new\_object();
+228     \textcolor{keyword}{struct }json\_object* val = json\_object\_new\_string(application\_name);
+229     json\_object\_object\_add(j\_obj, \textcolor{stringliteral}{"application\_name"}, val);
+230     \textcolor{keywordflow}{return} this->\hyperlink{class_lib_home_screen_a527b49dcfe581be6275d0eb2236ba37f}{call}(\textcolor{stringliteral}{"tap\_shortcut"}, j\_obj);
+231 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_lib_home_screen_aac03a45cbd453ba69ddb00c1016930a6}\label{class_lib_home_screen_aac03a45cbd453ba69ddb00c1016930a6}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!unsubscribe@{unsubscribe}}
+\index{unsubscribe@{unsubscribe}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{unsubscribe()}{unsubscribe()}}
+{\footnotesize\ttfamily int Lib\+Home\+Screen\+::unsubscribe (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event\+\_\+name }\end{DoxyParamCaption})}
+
+Unregister callback function for each event
+
+\subparagraph*{Parameters}
+
+
+\begin{DoxyItemize}
+\item event\+\_\+name \mbox{[}in\mbox{]} \+: This argument should be specified to the event name
+\end{DoxyItemize}
+
+\subparagraph*{Return}
+
+
+\begin{DoxyItemize}
+\item Returns 0 on success or -\/1 in case of error.
+\end{DoxyItemize}
+
+\subparagraph*{Note}
+
+This function disables to get an event to your callback function. 
+
+Definition at line 421 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+422 \{
+423     \textcolor{keywordflow}{if}(!sp\_websock)
+424     \{
+425         \textcolor{keywordflow}{return} -1;
+426     \}
+427     \textcolor{keyword}{struct }json\_object* j\_obj = json\_object\_new\_object();
+428     json\_object\_object\_add(j\_obj, \textcolor{stringliteral}{"event"}, json\_object\_new\_string(event\_name.c\_str()));
+429 
+430     \textcolor{keywordtype}{int} ret = afb\_wsj1\_call\_j(sp\_websock, \hyperlink{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}{API}, \textcolor{stringliteral}{"unsubscribe"}, j\_obj, 
+      \hyperlink{libhomescreen_8cpp_a7778933bffa862c63fa0a1b8219faa8b}{\_on\_reply\_static}, \textcolor{keyword}{this});
+431     \textcolor{keywordflow}{if} (ret < 0) \{
+432         \hyperlink{hmi-debug_8h_a65bb6c7cfe38f8a724beab5059d36fb2}{HMI\_ERROR}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"Failed to call verb:%s"},\_\_FUNCTION\_\_);
+433     \}
+434     \textcolor{keywordflow}{return} ret;
+435 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}\label{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!api\+\_\+list@{api\+\_\+list}}
+\index{api\+\_\+list@{api\+\_\+list}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{api\+\_\+list}{api\_list}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ Lib\+Home\+Screen\+::api\+\_\+list\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+    std::string(\textcolor{stringliteral}{"ping"}), 
+    std::string(\textcolor{stringliteral}{"tap\_shortcut"}), 
+    std::string(\textcolor{stringliteral}{"on\_screen\_message"}),
+    std::string(\textcolor{stringliteral}{"on\_screen\_reply"}),
+    std::string(\textcolor{stringliteral}{"subscribe"}),
+    std::string(\textcolor{stringliteral}{"unsubscribe"})
+\}
+\end{DoxyCode}
+
+
+Definition at line 50 of file libhomescreen.\+hpp.
+
+\mbox{\Hypertarget{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}\label{class_lib_home_screen_a6a6d8a4d33a006a08652e7377a4c29e9}} 
+\index{Lib\+Home\+Screen@{Lib\+Home\+Screen}!event\+\_\+list@{event\+\_\+list}}
+\index{event\+\_\+list@{event\+\_\+list}!Lib\+Home\+Screen@{Lib\+Home\+Screen}}
+\subsubsection{\texorpdfstring{event\+\_\+list}{event\_list}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ Lib\+Home\+Screen\+::event\+\_\+list\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+    std::string(\textcolor{stringliteral}{"tap\_shortcut"}),
+    std::string(\textcolor{stringliteral}{"on\_screen\_message"}),
+    std::string(\textcolor{stringliteral}{"on\_screen\_reply"}),
+    std::string(\textcolor{stringliteral}{"none"})
+\}
+\end{DoxyCode}
+
+
+Definition at line 51 of file libhomescreen.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{libhomescreen_8hpp}{libhomescreen.\+hpp}\item 
+libhomescreen/\hyperlink{libhomescreen_8cpp}{libhomescreen.\+cpp}\end{DoxyCompactItemize}

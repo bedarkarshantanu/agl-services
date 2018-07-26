@@ -1,0 +1,157 @@
+\hypertarget{libhomescreen_8cpp}{}\section{libhomescreen/libhomescreen.cpp File Reference}
+\label{libhomescreen_8cpp}\index{libhomescreen/libhomescreen.\+cpp@{libhomescreen/libhomescreen.\+cpp}}
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$libhomescreen.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}hmi-\/debug.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{libhomescreen_8cpp_a7a2176c3d71fec0f09dcb2aa0866b17e}{has\+\_\+verb} (const string \&verb)
+\item 
+static void \hyperlink{libhomescreen_8cpp_a73c05b96c151e5e46c28585ccb143c1c}{\+\_\+on\+\_\+hangup\+\_\+static} (void $\ast$closure, struct afb\+\_\+wsj1 $\ast$wsj)
+\item 
+static void \hyperlink{libhomescreen_8cpp_a782a05fde0f1c17e0c4c8f972a3f53c8}{\+\_\+on\+\_\+call\+\_\+static} (void $\ast$closure, const char $\ast$api, const char $\ast$verb, struct afb\+\_\+wsj1\+\_\+msg $\ast$msg)
+\item 
+static void \hyperlink{libhomescreen_8cpp_a3df86185aa9453726556da201d95a6f9}{\+\_\+on\+\_\+event\+\_\+static} (void $\ast$closure, const char $\ast$\hyperlink{structevent}{event}, struct afb\+\_\+wsj1\+\_\+msg $\ast$msg)
+\item 
+static void \hyperlink{libhomescreen_8cpp_a7778933bffa862c63fa0a1b8219faa8b}{\+\_\+on\+\_\+reply\+\_\+static} (void $\ast$closure, struct afb\+\_\+wsj1\+\_\+msg $\ast$msg)
+\item 
+static void $\ast$ \hyperlink{libhomescreen_8cpp_aa73353e1bf62c68b6b0aba7a1e4e275e}{event\+\_\+loop\+\_\+run} (void $\ast$args)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char \hyperlink{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}{A\+PI} \mbox{[}$\,$\mbox{]} = \char`\"{}homescreen\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libhomescreen_8cpp_a782a05fde0f1c17e0c4c8f972a3f53c8}\label{libhomescreen_8cpp_a782a05fde0f1c17e0c4c8f972a3f53c8}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!\+\_\+on\+\_\+call\+\_\+static@{\+\_\+on\+\_\+call\+\_\+static}}
+\index{\+\_\+on\+\_\+call\+\_\+static@{\+\_\+on\+\_\+call\+\_\+static}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+on\+\_\+call\+\_\+static()}{\_on\_call\_static()}}
+{\footnotesize\ttfamily static void \+\_\+on\+\_\+call\+\_\+static (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{const char $\ast$}]{api,  }\item[{const char $\ast$}]{verb,  }\item[{struct afb\+\_\+wsj1\+\_\+msg $\ast$}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 64 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+65 \{
+66     \textcolor{comment}{/* LibHomeScreen is not called from other process */}
+67 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{libhomescreen_8cpp_a3df86185aa9453726556da201d95a6f9}\label{libhomescreen_8cpp_a3df86185aa9453726556da201d95a6f9}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!\+\_\+on\+\_\+event\+\_\+static@{\+\_\+on\+\_\+event\+\_\+static}}
+\index{\+\_\+on\+\_\+event\+\_\+static@{\+\_\+on\+\_\+event\+\_\+static}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+on\+\_\+event\+\_\+static()}{\_on\_event\_static()}}
+{\footnotesize\ttfamily static void \+\_\+on\+\_\+event\+\_\+static (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{const char $\ast$}]{event,  }\item[{struct afb\+\_\+wsj1\+\_\+msg $\ast$}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 69 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+70 \{
+71     \textcolor{keyword}{static\_cast<}\hyperlink{class_lib_home_screen}{LibHomeScreen}*\textcolor{keyword}{>}(closure)->on\_event(NULL,\hyperlink{structevent}{event},msg);
+72 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{libhomescreen_8cpp_a73c05b96c151e5e46c28585ccb143c1c}\label{libhomescreen_8cpp_a73c05b96c151e5e46c28585ccb143c1c}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!\+\_\+on\+\_\+hangup\+\_\+static@{\+\_\+on\+\_\+hangup\+\_\+static}}
+\index{\+\_\+on\+\_\+hangup\+\_\+static@{\+\_\+on\+\_\+hangup\+\_\+static}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+on\+\_\+hangup\+\_\+static()}{\_on\_hangup\_static()}}
+{\footnotesize\ttfamily static void \+\_\+on\+\_\+hangup\+\_\+static (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{struct afb\+\_\+wsj1 $\ast$}]{wsj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+websocket 
+
+Definition at line 59 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+60 \{
+61     \textcolor{keyword}{static\_cast<}\hyperlink{class_lib_home_screen}{LibHomeScreen}*\textcolor{keyword}{>}(closure)->on\_hangup(NULL,wsj);
+62 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{libhomescreen_8cpp_a7778933bffa862c63fa0a1b8219faa8b}\label{libhomescreen_8cpp_a7778933bffa862c63fa0a1b8219faa8b}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!\+\_\+on\+\_\+reply\+\_\+static@{\+\_\+on\+\_\+reply\+\_\+static}}
+\index{\+\_\+on\+\_\+reply\+\_\+static@{\+\_\+on\+\_\+reply\+\_\+static}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+on\+\_\+reply\+\_\+static()}{\_on\_reply\_static()}}
+{\footnotesize\ttfamily static void \+\_\+on\+\_\+reply\+\_\+static (\begin{DoxyParamCaption}\item[{void $\ast$}]{closure,  }\item[{struct afb\+\_\+wsj1\+\_\+msg $\ast$}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 74 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+75 \{
+76     \textcolor{keyword}{static\_cast<}\hyperlink{class_lib_home_screen}{LibHomeScreen}*\textcolor{keyword}{>}(closure)->on\_reply(NULL,msg);
+77 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{libhomescreen_8cpp_aa73353e1bf62c68b6b0aba7a1e4e275e}\label{libhomescreen_8cpp_aa73353e1bf62c68b6b0aba7a1e4e275e}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!event\+\_\+loop\+\_\+run@{event\+\_\+loop\+\_\+run}}
+\index{event\+\_\+loop\+\_\+run@{event\+\_\+loop\+\_\+run}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{event\+\_\+loop\+\_\+run()}{event\_loop\_run()}}
+{\footnotesize\ttfamily static void$\ast$ event\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{void $\ast$}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 201 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+202 \{
+203     \textcolor{keyword}{struct }sd\_event* loop = (\textcolor{keyword}{struct }sd\_event*)(args);
+204     \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{HMI\_DEBUG}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"start eventloop"});
+205     \textcolor{keywordflow}{for}(;;)
+206         sd\_event\_run(loop, 30000000);
+207 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{libhomescreen_8cpp_a7a2176c3d71fec0f09dcb2aa0866b17e}\label{libhomescreen_8cpp_a7a2176c3d71fec0f09dcb2aa0866b17e}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!has\+\_\+verb@{has\+\_\+verb}}
+\index{has\+\_\+verb@{has\+\_\+verb}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{has\+\_\+verb()}{has\_verb()}}
+{\footnotesize\ttfamily static bool has\+\_\+verb (\begin{DoxyParamCaption}\item[{const string \&}]{verb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 518 of file libhomescreen.\+cpp.
+
+
+\begin{DoxyCode}
+519 \{
+520     \hyperlink{hmi-debug_8h_a0d26d8b8201011dade787236519711c0}{HMI\_DEBUG}(\textcolor{stringliteral}{"libhomescreen"},\textcolor{stringliteral}{"verb is %s"}, verb.c\_str());
+521     \textcolor{keywordflow}{if}(find(\hyperlink{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}{LibHomeScreen::api\_list}.begin(), 
+      \hyperlink{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}{LibHomeScreen::api\_list}.end(), verb) != 
+      \hyperlink{class_lib_home_screen_a5593ff5ac78f6495ccb649904cf0ab08}{LibHomeScreen::api\_list}.end())
+522         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+523     \textcolor{keywordflow}{else}
+524         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+525 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}\label{libhomescreen_8cpp_a1e2d6e77dd8f0162f830058579eab42f}} 
+\index{libhomescreen.\+cpp@{libhomescreen.\+cpp}!A\+PI@{A\+PI}}
+\index{A\+PI@{A\+PI}!libhomescreen.\+cpp@{libhomescreen.\+cpp}}
+\subsubsection{\texorpdfstring{A\+PI}{API}}
+{\footnotesize\ttfamily const char A\+PI\mbox{[}$\,$\mbox{]} = \char`\"{}homescreen\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 36 of file libhomescreen.\+cpp.
+

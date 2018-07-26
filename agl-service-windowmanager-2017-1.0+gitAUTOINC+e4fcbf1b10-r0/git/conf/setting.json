@@ -1,0 +1,8 @@
+{
+    "description": "Settings for window manager",
+    "settings" :
+    {
+        "scaling" : "aspect_fit",
+        "options@scaling" : "aspect_fit|display_fit|none"
+    }
+}

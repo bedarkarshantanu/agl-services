@@ -1,0 +1,11 @@
+
+gcc --shared -fPIC -o aia.so [^t]*.c -lcurl -lsystemd -ljson-c
+
+afb-daemon --rootdir=. --ldpaths=. --port=1212 --token= --verbose --verbose --verbose
+
+
+afb-client-demo localhost:1212/api?token=t
+agl-identity-agent subscribe 
+
+
+gcc -o taia *aia-uds-bluez.c  -lsystemd

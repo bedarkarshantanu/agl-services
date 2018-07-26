@@ -1,0 +1,123 @@
+{
+	"$schema": "http://iot.bzh/download/public/schema/json/signal-composer-schema.json",
+	"signals": [
+		{
+			"uid": "rear_left_window",
+			"event": "low-can/messages.windows.rear_left.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "rear_left_door",
+			"event": "low-can/messages.doors.rear_left.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "rear_right_window",
+			"event": "low-can/messages.windows.rear_right.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "rear_right_door",
+			"event": "low-can/messages.doors.rear_right.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "front_left_window",
+			"event": "low-can/messages.windows.front_left.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "front_left_door",
+			"event": "low-can/messages.doors.front_left.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "front_right_window",
+			"event": "low-can/messages.windows.front_right.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "front_right_door",
+			"event": "low-can/messages.doors.front_right.open",
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "rear_left",
+			"depends": [
+				"rear_left_window",
+				"rear_left_door"
+			],
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen"
+			}
+		},
+		{
+			"uid": "rear_right",
+			"depends": [
+				"rear_right_door",
+				"rear_right_window"
+			],
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen",
+				"args": {}
+			}
+		},
+		{
+			"uid": "front_left",
+			"depends": [
+				"front_left_door",
+				"front_left_window"
+			],
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen",
+				"args": {}
+			}
+		},
+		{
+			"uid": "front_right",
+			"depends": [
+				"front_right_door",
+				"front_right_window"
+			],
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen",
+				"args": {}
+			}
+		},
+		{
+			"uid": "all_doors",
+			"depends": [
+				"front_left_door",
+				"front_left_window",
+				"front_right_door",
+				"front_right_window",
+				"rear_left_door",
+				"rear_left_window",
+				"rear_right_door",
+				"rear_right_window"
+			],
+			"onReceived": {
+				"function": "plugin://low-can-callbacks/isOpen",
+				"args": {
+					"evtname": "doors.open"
+				}
+			}
+		}
+	]
+}

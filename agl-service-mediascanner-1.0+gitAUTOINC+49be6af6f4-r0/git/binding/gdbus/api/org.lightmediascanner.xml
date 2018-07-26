@@ -1,0 +1,75 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+                      "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<!-- GDBus 2.48.2 -->
+<node>
+  <interface name="org.freedesktop.DBus.Properties">
+    <method name="Get">
+      <arg type="s" name="interface_name" direction="in"/>
+      <arg type="s" name="property_name" direction="in"/>
+      <arg type="v" name="value" direction="out"/>
+    </method>
+    <method name="GetAll">
+      <arg type="s" name="interface_name" direction="in"/>
+      <arg type="a{sv}" name="properties" direction="out"/>
+    </method>
+    <method name="Set">
+      <arg type="s" name="interface_name" direction="in"/>
+      <arg type="s" name="property_name" direction="in"/>
+      <arg type="v" name="value" direction="in"/>
+    </method>
+    <signal name="PropertiesChanged">
+      <arg type="s" name="interface_name"/>
+      <arg type="a{sv}" name="changed_properties"/>
+      <arg type="as" name="invalidated_properties"/>
+    </signal>
+  </interface>
+  <interface name="org.freedesktop.DBus.Introspectable">
+    <method name="Introspect">
+      <arg type="s" name="xml_data" direction="out"/>
+    </method>
+  </interface>
+  <interface name="org.freedesktop.DBus.Peer">
+    <method name="Ping"/>
+    <method name="GetMachineId">
+      <arg type="s" name="machine_uuid" direction="out"/>
+    </method>
+  </interface>
+  <interface name="org.lightmediascanner.Scanner1">
+    <method name="Scan">
+      <arg type="a{sv}" name="specification" direction="in">
+      </arg>
+    </method>
+    <method name="Stop">
+    </method>
+    <method name="RequestWriteLock">
+    </method>
+    <method name="ReleaseWriteLock">
+    </method>
+    <signal name="ScanProgress">
+      <arg type="s" name="Category">
+      </arg>
+      <arg type="s" name="Path">
+      </arg>
+      <arg type="t" name="UpToDate">
+      </arg>
+      <arg type="t" name="Processed">
+      </arg>
+      <arg type="t" name="Deleted">
+      </arg>
+      <arg type="t" name="Skipped">
+      </arg>
+      <arg type="t" name="Errors">
+      </arg>
+    </signal>
+    <property type="s" name="DataBasePath" access="read">
+    </property>
+    <property type="b" name="IsScanning" access="read">
+    </property>
+    <property type="b" name="WriteLocked" access="read">
+    </property>
+    <property type="t" name="UpdateID" access="read">
+    </property>
+    <property type="a{sv}" name="Categories" access="read">
+    </property>
+  </interface>
+</node>

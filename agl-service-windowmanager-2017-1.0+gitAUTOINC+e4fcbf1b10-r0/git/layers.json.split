@@ -1,0 +1,56 @@
+{
+   "comment": "Surface ID to Layer ID mapping",
+
+   "main_surface": {
+      "surface_role": "HomeScreen",
+      "comment": "This surface should never be made invisible (The HomeScreen)"
+   },
+
+   "mappings": [
+      {
+         "role": "BackGroundLayer",
+         "name": "BackGroundLayer",
+         "layer_id": 999,
+         "comment": "Single BackGround layer map for the map, radio, music and video"
+      },
+      {
+         "role": "homescreen",
+         "name": "FarHomeScreen",
+         "layer_id": 1000,
+         "comment": "FarHomeScreen is the part of HomeScreen. The z order of this layer is lower than NearHomeScreen"
+      },
+      {
+         "role": "music|video|browser|radio|phone|map|hvac|settings|dashboard|poi|mixer|sdl|launcher|fallback",
+         "name": "Apps",
+         "layer_id": 1001,
+         "comment": "Range of IDs that will always be placed on layer 1001",
+
+         "split_layouts": [
+            {
+               "name": "map",
+               "main_match": "map",
+               "sub_match": "hvac|music",
+               "priority": 1000
+            }
+         ]
+      },
+      {
+        "role": "software_keyboard",
+        "name": "NearHomeScreen",
+        "layer_id": 1002,
+        "comment": "NearHomeScreen is the part of HomeScreen. The z order of this layer is upper than FarHomeScreen"
+      },
+      {
+        "role": "restriction",
+        "name": "Restriction",
+        "layer_id": 1003,
+        "comment": "This layer is for restriction notification. This is used by restriction role"
+      },
+      {
+         "role": "^on_screen.*",
+         "name": "OnScreen",
+         "layer_id": 9999,
+         "comment": "Range of IDs that will always be placed on the OnScreen layer, that gets a very high 'dummy' id of 9999"
+      }
+   ]
+}

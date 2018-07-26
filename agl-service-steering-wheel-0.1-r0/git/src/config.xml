@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="agl-service-steering-wheel" version="1.0">
+  <name>steering-wheel-service</name>
+  <icon src="icon.png"/>
+  <content src="config.xml" type="application/vnd.agl.service"/>
+  <description>The name says it all!</description>
+  <author>TOYOTA</author>
+  <license>APL2.0</license>
+  <feature name="urn:AGL:widget:provided-api">
+     <param name="steering-wheel" value="ws" />
+  </feature>
+  <feature name="urn:AGL:widget:required-api">
+	<param name="lib/af-steering-wheel-binding.so" value="local" />
+  </feature>
+  <feature name="urn:AGL:widget:required-permission">
+	<param name="#target" value="main" />
+	<param name="urn:AGL:permission::public:hidden" value="required" />
+  </feature>
+</widget>
+
+

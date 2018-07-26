@@ -1,0 +1,47 @@
+{
+	"$schema": "http://iot.bzh/download/public/schema/json/signal-composer-schema.json",
+	"signals": [
+		{
+			"uid": "vehicle_speed",
+			"event": "low-can/diagnostic_messages.vehicle.speed",
+			"retention": 30,
+			"unit": "km/h",
+			"frequency": 1,
+			"getSignalsArgs": {
+				"frequency": 5,
+				"min": 10
+			},
+			"onReceived": {
+				"function": "lua://_Unit_Converter",
+				"args": {
+					"from": "km/h",
+					"to": "mi/h"
+				}
+			}
+		},
+		{
+			"uid": "engine_speed",
+			"event": "low-can/diagnostic_messages.engine.speed",
+			"retention": 30,
+			"unit": "rpm",
+			"frequency": 1,
+			"onReceived": {
+				"function": "plugin://defaultOnReceived"
+			}
+		},
+		{
+			"uid": "fuel_level",
+			"event": "low-can/diagnostic_messages.fuel.level",
+			"retention":30,
+			"unit": "liter",
+			"frequency": 1
+		},
+		{
+			"uid": "engine_load",
+			"event": "low-can/diagnostic_messages.engine.load",
+			"retention":30,
+			"unit": "Nm",
+			"frequency": 1
+		}
+	]
+}

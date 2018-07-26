@@ -1,0 +1,154 @@
+{
+	"$schema": "http://iot.bzh/download/public/schema/json/signal-composer-schema.json",
+	"signals": [
+		{
+			"uid": "latitude",
+			"event": "gps/location",
+			"unit": "degree",
+			"frequency": 1,
+			"onReceived": {
+				"function": "plugin://gps-callbacks/getLatitude"
+			}
+		},
+		{
+			"uid": "longitude",
+			"event": "gps/location",
+			"unit": "degree",
+			"frequency": 1,
+			"onReceived": {
+				"function": "plugin://gps-callbacks/getSignal",
+				"args": {
+					"what": "longitude"
+				}
+			}
+		},
+		{
+			"uid": "altitude",
+			"event": "gps/location",
+			"unit": "meter",
+			"frequency": 1
+		},
+		{
+			"uid": "heading",
+			"depends": [
+				"latitude",
+				"longitude"
+			],
+			"retention": 30,
+			"unit": "degree",
+			"frequency": 1,
+			"onReceived": {
+				"function": "lua://_Heading"
+			}
+		},
+		{
+			"uid": "speed",
+			"event": "gps/location",
+			"retention": 30,
+			"unit": "m/s",
+			"frequency": 1
+		},
+		{
+			"uid": "climb",
+			"event": "mraa/getclimb",
+			"unit": "degree",
+			"frequency": 1
+		},
+		{
+			"uid": "roll_rate",
+			"event": "mraa/gyroscope",
+			"unit": "degree/s",
+			"frequency": 1
+		},
+		{
+			"uid": "pitch_rate",
+			"event": "mraa/gyroscope",
+			"unit": "degree/s",
+			"frequency": 1
+		},
+		{
+			"uid": "yaw_rate",
+			"event": "gps/gyroscope",
+			"unit": "degree/s",
+			"frequency": 1
+		},
+		{
+			"uid": "pdop",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "hdop",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "vdop",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "used_satellites",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "tracked_satellites",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "visible_satellites",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "sigma_hposition",
+			"event": "gps/location",
+			"unit": "meter",
+			"frequency": 1
+		},
+		{
+			"uid": "sigma_altitude",
+			"event": "gps/location",
+			"unit": "meter",
+			"frequency": 1
+		},
+		{
+			"uid": "sigma_heading",
+			"event": "gps/location",
+			"unit": "degree",
+			"frequency": 1
+		},
+		{
+			"uid": "sigma_speed",
+			"event": "gps/location",
+			"retention": 30,
+			"unit": "m/s",
+			"frequency": 1
+		},
+		{
+			"uid": "sigma_climb",
+			"event": "gps/location",
+			"unit": "degree",
+			"frequency": 1
+		},
+		{
+			"uid": "gnss_fix_status",
+			"event": "gps/location",
+			"frequency": 1
+		},
+		{
+			"uid": "dr_status",
+			"event": "gps/location",
+			"retention": 30,
+			"frequency": 1
+		},
+		{
+			"uid": "reliabilty_index",
+			"event": "gps/location",
+			"retention": 30,
+			"frequency": 1
+		}
+	]
+}

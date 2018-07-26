@@ -1,0 +1,48 @@
+{
+    "$schema": "http://iot.bzh/download/public/schema/json/ctl-schema.json",
+    "metadata": {
+        "uid": "4a-policy",
+        "version": "0.1",
+        "api": "4a-policy",
+        "require": [],
+        "info": "Basic Audio Policy Control for Audio-4a - Sample 1",
+        "author": "Loïc Collignon <loic.collignon@iot.bzh>",
+        "date": "2018-05-25"
+    },
+    "onload": [],
+    "controls": [],
+    "events": [],
+    "roles":[
+            {
+                "uid": "radio",
+                "description": "Radio (tuner)",
+                "priority": 0,
+                "stream": "radio_stream"
+            },
+            {
+                "uid": "multimedia",
+                "description": "Multimedia content (e.g. media player, etc.)",
+                "priority": 0,
+                "stream": "multimedia"
+            },
+            {
+                "uid": "emergency",
+                "description": "Safety-relevant or critical alerts/alarms",
+                "priority": 100,
+                "stream": "emergency",
+                "interrupts":[
+                    {"type": "ramp", "args": { "uid": "ramp-slow", "volume": 30} }
+                ]
+            },
+            {
+                "uid": "navigation",
+                "name": "navigation",
+                "description": "Navigation instructions (GPS, turn directions, etc...)",
+                "priority": 25,
+                "stream": "navigation",
+                "interrupts":[
+                    {"type": "ramp", "args": { "uid": "ramp-slow", "volume": 30} }
+                ]
+            }
+        ]
+}
